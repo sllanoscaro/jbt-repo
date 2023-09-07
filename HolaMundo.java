@@ -1,7 +1,7 @@
 public class HolaMundo {
     public static void main(String[]args){
         System.out.println("Hola Mundo");
-        System.out.println("Arturo Avalos");
+        System.out.println("Arturo Avalos Pascual");
     }
 
 }
