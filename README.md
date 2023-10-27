@@ -9,3 +9,5 @@
 1) (27/10): Creación del historial de avances que mantendrá registro de todos los avances que se realicen.
 2) (27/10) (Sebastián Ll.): Organicé la estructura del repositorio para que este sea más ordenado y fácil de entender.
 3) (27/10) (Sebastián Ll.): Creé el modelo UML del proyecto en Visual Paradigm.
+4) (27/10) (Arturo Av.): Desarrolle el boceto de las GUI mediante la pagina moqupus
+5) (27/10) (Arturo Av.): Avance en el desarrollo de las clases login, usuario y admin.
