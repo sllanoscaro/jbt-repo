@@ -1,8 +1,11 @@
-Java's Backroom Theater (JBT)
+# Proyecto POO: Java's Backroom Theater (JBT)
 
-Integrantes:
+## Integrantes:
 - Sebastián Llanos
 - Lian Canio
 - Arturo Avalos
-![Screenshot_10](https://github.com/sllanoscaro/jbt-repo/assets/137134833/eb3485f5-0410-44aa-a2fb-d1fd60282616)
-![Screenshot_11](https://github.com/sllanoscaro/jbt-repo/assets/137134833/7430e1ef-bb71-4efc-9b32-a640bef79e5d)
+
+## Historial de avances:
+1) (27/10): Creación del historial de avances que mantendrá registro de todos los avances que se realicen.
+2) (27/10) (Sebastián Ll.): Organicé la estructura del repositorio para que este sea más ordenado y fácil de entender.
+3) (27/10) (Sebastián Ll.): Creé el modelo UML del proyecto en Visual Paradigm.
