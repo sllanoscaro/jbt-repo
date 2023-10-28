@@ -11,3 +11,5 @@
 3) (27/10) (Sebastián Ll.): Creé el modelo UML del proyecto en Visual Paradigm.
 4) (27/10) (Arturo Av.): Desarrolle el boceto de las GUI mediante la pagina moqupus
 5) (27/10) (Arturo Av.): Avance en el desarrollo de las clases login, usuario y admin.
+6) (27/10) (Lian Ca.): Avance en el desarrollo de las clases Sala, Ticket y Funcion.
+7) (27/10) (Lian Ca.): Avance en el reporte.
