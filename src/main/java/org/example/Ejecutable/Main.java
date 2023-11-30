@@ -1,10 +1,12 @@
 package org.example.Ejecutable;
-import org.example.Gui.Diseno;
+import org.example.Gui.Login;
+import org.example.Gui.MenuAdmin;
 
 
 public class Main {
     public static void main(String[] args) {
-        Diseno ventana = new Diseno();
+        Login login = new Login();
+
 
 
         }

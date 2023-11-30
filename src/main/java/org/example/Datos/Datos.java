@@ -11,16 +11,35 @@ import org.example.Modelo.Admin;
 public interface Datos {
 
     static void guardarDatosEnCSV(Usuario usuario) {
-
         String[] datos = {usuario.getNombre(), usuario.getClave()};
         escribirCSV("datos.csv", datos);
         System.out.println("Datos guardados en datos.csv");
     }
+
     static void guardarDatosAdminEnCSV(Admin admin) {
+        boolean adminEncontrado = false;
 
-        String[] datos = {admin.getNombre(), admin.getClave()};
-        escribirCSV("datos.csv", datos);
+        try (BufferedReader br = new BufferedReader(new FileReader("datos.csv"))) {
+            String linea;
 
+            while ((linea = br.readLine()) != null) {
+                String[] datos = linea.split(",");
+
+                if (datos[0].equals(admin.getNombre()) && datos[1].equals(admin.getClave())) {
+                    adminEncontrado = true;
+                    System.out.println("Admin encontrado");
+                    break;
+                }
+            }
+
+            if (!adminEncontrado) {
+                System.out.println("Admin no encontrado. Creando nuevo...");
+                String[] datosadmin = {admin.getNombre(), admin.getClave()};
+                escribirCSV("datos.csv", datosadmin);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     static void escribirCSV(String nombreArchivo, String[] datos) {
@@ -51,6 +70,31 @@ public interface Datos {
             permisos = false;
 
 
+            System.out.println("Usuario no encontrado con Usuario: " + usuarioBuscado);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return permisos;
+    }
+    static boolean buscarUsuarioOAdmin(String usuarioBuscado, String claveBuscado) {
+        boolean permisos = true;
+        try (BufferedReader br = new BufferedReader(new FileReader("datos.csv"))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] datos = linea.split(",");
+                if (usuarioBuscado.equals("admin")&& claveBuscado.equals("1234")) {
+
+                    System.out.println("Usuario encontrado:");
+                    System.out.println("Usuario: " + datos[0]);
+                    System.out.println("Clave: " + datos[1]);
+                    permisos = true;
+                    return permisos;
+                }
+                else if (datos[0].equals(usuarioBuscado) && datos[1].equals(claveBuscado)){
+                    permisos = false;
+                    return permisos;
+                }
+            }
             System.out.println("Usuario no encontrado con Usuario: " + usuarioBuscado);
         } catch (IOException e) {
             e.printStackTrace();
