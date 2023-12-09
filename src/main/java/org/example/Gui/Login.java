@@ -46,10 +46,17 @@ public class Login extends JFrame {
         crearcuenta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Usuario usuario1 = new Usuario();
+
                 String usuario = usuarioText.getText();
-                usuario1.setNombre(usuario);
                 String clave = claveText.getText();
+
+                if (usuario.isEmpty() || clave.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Por favor, completa todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                Usuario usuario1 = new Usuario();
+                usuario1.setNombre(usuario);
                 usuario1.setClave(clave);
                 Datos.guardarDatosEnCSV(usuario1);
                 usuarioText.setText("");
@@ -60,22 +67,27 @@ public class Login extends JFrame {
         iniciarsesion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (Datos.buscarUsuarioyClave(usuarioText.getText(), claveText.getText())){
-                    JOptionPane.showMessageDialog(null, "Inicio de sesion exitoso", "Bienvenido", JOptionPane.WARNING_MESSAGE);
-                    if (Datos.buscarUsuarioOAdmin(usuarioText.getText(), claveText.getText())){
+                String usuario = usuarioText.getText();
+                String clave = claveText.getText();
+
+                if (usuario.isEmpty() || clave.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Por favor, completa todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;  // No continuar si hay campos vacíos
+                }
+
+                if (Datos.buscarUsuarioyClave(usuario, clave)) {
+                    JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso", "Bienvenido", JOptionPane.WARNING_MESSAGE);
+
+                    if (Datos.buscarUsuarioOAdmin(usuario, clave)) {
                         JOptionPane.showMessageDialog(null, "Eres admin Crack", "Bienvenido", JOptionPane.WARNING_MESSAGE);
                         MenuAdmin menuAdmin = new MenuAdmin();
-                    }
-                    else{
+                    } else {
                         JOptionPane.showMessageDialog(null, "Eres usuario bestia", "Bienvenido", JOptionPane.WARNING_MESSAGE);
                         MenuUsuario menuUsuario = new MenuUsuario();
-
                     }
-                }
-                else {
+                } else {
                     JOptionPane.showMessageDialog(null, "Usuario no encontrado", "Fallido", JOptionPane.WARNING_MESSAGE);
                 }
-
 
                 usuarioText.setText("");
                 claveText.setText("");

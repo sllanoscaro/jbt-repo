@@ -18,7 +18,6 @@ public interface Datos {
 
     static void guardarDatosAdminEnCSV(Admin admin) {
         boolean adminEncontrado = false;
-
         try (BufferedReader br = new BufferedReader(new FileReader("datos.csv"))) {
             String linea;
 
