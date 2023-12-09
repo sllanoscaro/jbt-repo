@@ -67,25 +67,25 @@ public class Login extends JFrame {
         iniciarsesion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String usuario = usuarioText.getText();
-                String clave = claveText.getText();
-
-                if (usuario.isEmpty() || clave.isEmpty()) {
+                if (usuarioText.getText().isEmpty() || claveText.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Por favor, completa todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
                     return;  // No continuar si hay campos vacíos
                 }
 
-                if (Datos.buscarUsuarioyClave(usuario, clave)) {
-                    JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso", "Bienvenido", JOptionPane.WARNING_MESSAGE);
-
-                    if (Datos.buscarUsuarioOAdmin(usuario, clave)) {
+                if (Datos.buscarUsuarioyClave(usuarioText.getText(), claveText.getText())){
+                    JOptionPane.showMessageDialog(null, "Inicio de sesion exitoso", "Bienvenido", JOptionPane.WARNING_MESSAGE);
+                    if (Datos.buscarUsuarioOAdmin(usuarioText.getText(), claveText.getText())){
                         JOptionPane.showMessageDialog(null, "Eres admin Crack", "Bienvenido", JOptionPane.WARNING_MESSAGE);
+                        dispose();
                         MenuAdmin menuAdmin = new MenuAdmin();
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Eres usuario bestia", "Bienvenido", JOptionPane.WARNING_MESSAGE);
-                        MenuUsuario menuUsuario = new MenuUsuario();
                     }
-                } else {
+                    else{
+                        JOptionPane.showMessageDialog(null, "Eres usuario bestia", "Bienvenido", JOptionPane.WARNING_MESSAGE);
+                        dispose();
+                        MenuUsuario menuUsuario = new MenuUsuario(usuarioText.getText());
+                    }
+                }
+                else {
                     JOptionPane.showMessageDialog(null, "Usuario no encontrado", "Fallido", JOptionPane.WARNING_MESSAGE);
                 }
 

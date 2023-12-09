@@ -81,8 +81,7 @@ public interface Datos {
             String linea;
             while ((linea = br.readLine()) != null) {
                 String[] datos = linea.split(",");
-                if (usuarioBuscado.equals("admin")&& claveBuscado.equals("1234")) {
-
+                if (usuarioBuscado.equals("admin") && claveBuscado.equals("1234") && datos.length >= 2) {
                     System.out.println("Usuario encontrado:");
                     System.out.println("Usuario: " + datos[0]);
                     System.out.println("Clave: " + datos[1]);
