@@ -15,4 +15,5 @@
 7) (27/10) (Lian Ca.): Avance en el desarrollo de las clases Sala, Ticket y Funcion.
 8) (27/10) (Lian Ca.): Avance y arregle los errores con los que constaba el informe para el Avance 02.
 9) (30/11) (Arturo Av.): Avance en el desarrollo con la implementacion de GUIS en la clase login, usuario y admin
+10) (09/12) (Arturo Av.): GUI de login terminada, GUI de menuAdmin terminado, implementacion de verFuncionesDisponibles y permite editar las funciones pero le falta arreglar un par de erorres
 
