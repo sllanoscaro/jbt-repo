@@ -31,17 +31,7 @@ public class Usuario {
         this.peliculasFav = peliculasFav;
     }
 
-    public boolean iniciarSesion(String nombre, String clave) {
-        if (this.nombre != null && this.clave != null) {
-            return this.nombre.equals(nombre) && this.clave.equals(clave);
-        }
-        return false;
-    }
 
-    public void crearCuenta(String nombre, String clave) {
-        this.nombre = nombre;
-        this.clave = clave;
-    }
     @Override
     public String toString() {
         return super.toString();

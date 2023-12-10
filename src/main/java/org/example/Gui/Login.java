@@ -5,9 +5,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import org.example.Datos.Datos;
+
+import org.example.Datos.DatosUsuariosYAdmin;
 import org.example.Modelo.Admin;
 import org.example.Modelo.Usuario;
+
 
 public class Login extends JFrame {
     private JTextField usuarioText;
@@ -41,7 +43,7 @@ public class Login extends JFrame {
         setVisible(true);
 
         Admin admin1 = new Admin();
-        Datos.guardarDatosAdminEnCSV(admin1);
+        DatosUsuariosYAdmin.guardarDatosAdminEnCSV(admin1);
 
         crearcuenta.addActionListener(new ActionListener() {
             @Override
@@ -58,7 +60,7 @@ public class Login extends JFrame {
                 Usuario usuario1 = new Usuario();
                 usuario1.setNombre(usuario);
                 usuario1.setClave(clave);
-                Datos.guardarDatosEnCSV(usuario1);
+                DatosUsuariosYAdmin.guardarDatosEnCSV(usuario1);
                 usuarioText.setText("");
                 claveText.setText("");
             }
@@ -72,9 +74,10 @@ public class Login extends JFrame {
                     return;  // No continuar si hay campos vacíos
                 }
 
-                if (Datos.buscarUsuarioyClave(usuarioText.getText(), claveText.getText())){
+                if (DatosUsuariosYAdmin.buscarUsuarioyClave(usuarioText.getText(), claveText.getText())){
                     JOptionPane.showMessageDialog(null, "Inicio de sesion exitoso", "Bienvenido", JOptionPane.WARNING_MESSAGE);
-                    if (Datos.buscarUsuarioOAdmin(usuarioText.getText(), claveText.getText())){
+
+                    if (DatosUsuariosYAdmin.buscarUsuarioOAdmin(usuarioText.getText(), claveText.getText())){
                         JOptionPane.showMessageDialog(null, "Eres admin Crack", "Bienvenido", JOptionPane.WARNING_MESSAGE);
                         dispose();
                         MenuAdmin menuAdmin = new MenuAdmin();
@@ -82,7 +85,8 @@ public class Login extends JFrame {
                     else{
                         JOptionPane.showMessageDialog(null, "Eres usuario bestia", "Bienvenido", JOptionPane.WARNING_MESSAGE);
                         dispose();
-                        MenuUsuario menuUsuario = new MenuUsuario(usuarioText.getText());
+                        MenuUsuario menuUsuario = new MenuUsuario();
+
                     }
                 }
                 else {
