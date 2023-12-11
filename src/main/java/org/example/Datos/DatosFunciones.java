@@ -15,12 +15,12 @@ import org.example.Modelo.Sala;
 import org.example.Modelo.Admin;
 public interface DatosFunciones {
     static void guardarDatosFuncionesEnCSV(Funcion funcion, Sala sala) {
-        String[] datos = {funcion.getNombre(), funcion.getGenero(),funcion.getDirector(),funcion.getSinopsis(),funcion.getClasificacion(),sala.getHorario(),sala.getNumeroSala()};
+        String[] datos = {funcion.getNombre(), funcion.getGenero(),funcion.getDirector(),funcion.getSinopsis(),funcion.getClasificacion(),sala.getHorario(),sala.getNumeroSala(),funcion.getRating()};
         escribirCSV("src\\main\\resources\\datosFunciones.csv", datos);
         System.out.println("Datos guardados en datosFunciones.csv");
     }
     static void guardarDatosPeliculasEnCSV(Funcion funcion, Sala sala) {
-        String[] datos = {funcion.getNombre(), funcion.getGenero(),funcion.getDirector(),funcion.getSinopsis(),funcion.getClasificacion(),sala.getHorario(),sala.getNumeroSala()};
+        String[] datos = {funcion.getNombre(), funcion.getGenero(),funcion.getDirector(),funcion.getSinopsis(),funcion.getClasificacion(),sala.getHorario(),sala.getNumeroSala(),funcion.getRating()};
         escribirCSV("src\\main\\resources\\funciones.csv", datos);
         System.out.println("Datos guardados en funciones.csv");
     }
@@ -97,7 +97,7 @@ public interface DatosFunciones {
                 String sinopsis = datos[3].trim();
                 String clasificacion = datos[4].trim();
 
-                Funcion funcion = new Funcion(nombre, genero, director, sinopsis, clasificacion);
+                Funcion funcion = new Funcion(nombre, genero, director, sinopsis, clasificacion,"");
                 funciones.add(funcion);
             }
         } catch (IOException e) {

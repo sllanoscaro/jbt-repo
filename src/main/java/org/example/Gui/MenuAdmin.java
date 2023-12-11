@@ -50,8 +50,19 @@ public class MenuAdmin extends JFrame {
         botonFuncionesDisponibles.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                dispose();
                 VentanaFuncionesEditables ventanaFuncionesEditables = new VentanaFuncionesEditables();
             }
         });
+
+        botonUsuarios.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                VerUsuarios verUsuarios = new VerUsuarios();
+            }
+        });
+
+
 
     }}

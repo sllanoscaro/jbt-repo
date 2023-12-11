@@ -7,6 +7,8 @@ import java.io.IOException;
 import org.example.Modelo.Usuario;
 import org.example.Modelo.Admin;
 
+import javax.swing.table.DefaultTableModel;
+
 
 public interface DatosUsuariosYAdmin {
 
@@ -82,9 +84,6 @@ public interface DatosUsuariosYAdmin {
             while ((linea = br.readLine()) != null) {
                 String[] datos = linea.split(",");
                 if (usuarioBuscado.equals("admin") && claveBuscado.equals("1234") && datos.length >= 2) {
-                    System.out.println("Usuario encontrado:");
-                    System.out.println("Usuario: " + datos[0]);
-                    System.out.println("Clave: " + datos[1]);
                     permisos = true;
                     return permisos;
                 }
@@ -98,6 +97,18 @@ public interface DatosUsuariosYAdmin {
             e.printStackTrace();
         }
         return permisos;
+    }
+    static DefaultTableModel mostrarDatosCSV(DefaultTableModel model){
+        try (BufferedReader br = new BufferedReader(new FileReader("src\\main\\resources\\datosUsuarios.csv"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                model.addRow(data);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return model;
     }
 
 }

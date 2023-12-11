@@ -14,6 +14,9 @@ public class VentanaFuncionesEditables extends JFrame {
     private JPanel panel;
     private JButton editarButton;
     private JButton asignarSalaButton;
+    private JButton agregarPeliculaButton;
+    private JButton volverButton;
+
 
     public VentanaFuncionesEditables() {
         setTitle("Funciones Editables");
@@ -42,6 +45,10 @@ public class VentanaFuncionesEditables extends JFrame {
         // Instantiate the buttons
         editarButton = new JButton("Editar Datos");
         asignarSalaButton = new JButton("Asignar Sala");
+        agregarPeliculaButton = new JButton("Agregar Pelicula");
+        volverButton = new JButton("Volver");
+
+
 
         asignarSalaButton.addActionListener(new ActionListener() {
             @Override
@@ -53,7 +60,7 @@ public class VentanaFuncionesEditables extends JFrame {
                     String director = (String) dataTable.getValueAt(selectedRow, 2);
                     String sinopsis = (String) dataTable.getValueAt(selectedRow, 3);
                     String clasificacion = (String) dataTable.getValueAt(selectedRow, 4);
-                    Funcion funcion = new Funcion(pelicula,genero,director,sinopsis,clasificacion);
+                    Funcion funcion = new Funcion(pelicula,genero,director,sinopsis,clasificacion,"");
 
                     new VentanaAsignarSala(funcion);
                 } else {
@@ -82,10 +89,28 @@ public class VentanaFuncionesEditables extends JFrame {
             }
         });
 
+        agregarPeliculaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AgregarFuncion agregarFuncion = new AgregarFuncion();
+                dispose();
+
+            }
+        });
+        volverButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                MenuAdmin menuAdmin = new MenuAdmin();
+            }
+        });
+
         // Add both buttons to the panel
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(asignarSalaButton);
         buttonPanel.add(editarButton);
+        buttonPanel.add(agregarPeliculaButton);
+        buttonPanel.add(volverButton);
 
         panel.add(buttonPanel, BorderLayout.SOUTH);
 
