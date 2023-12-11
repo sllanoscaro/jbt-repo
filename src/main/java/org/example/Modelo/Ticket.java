@@ -15,7 +15,7 @@ public class Ticket {
     public String nombrePelicula(){
         return funcion.getNombre();
     }
-    public int salaPelicula(){
+    public String salaPelicula(){
         return sala.getNumeroSala();
     }
     public String horarioPelicula(){

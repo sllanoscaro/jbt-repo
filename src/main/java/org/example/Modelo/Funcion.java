@@ -14,6 +14,9 @@ public class Funcion {
 
     private String clasificacion;
     private float rating;
+
+
+
     private List<Sala> salas;
 
 
@@ -29,6 +32,7 @@ public class Funcion {
     public void agregarSala(Sala sala) {
         salas.add(sala);
     }
+    public static List<Funcion> listaFunciones = new ArrayList<>();
     public String getNombre() {
         return nombre;
     }
@@ -94,6 +98,21 @@ public class Funcion {
         }
         return matriz;
     }
+
+    public static Funcion obtenerFuncionPorPelicula(String pelicula) {
+        for (Funcion funcion : listaFunciones) {
+            if (funcion.getNombre().equals(pelicula)) {
+                return funcion;
+            }
+        }
+        return null;  // No se encontró la función
+    }
+    public List<Sala> getSalas() {
+        return salas;
+    }
+
+
+
 
 
 

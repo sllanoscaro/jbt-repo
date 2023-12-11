@@ -12,13 +12,13 @@ public interface DatosUsuariosYAdmin {
 
     static void guardarDatosEnCSV(Usuario usuario) {
         String[] datos = {usuario.getNombre(), usuario.getClave()};
-        escribirCSV("datos.csv", datos);
-        System.out.println("Datos guardados en datos.csv");
+        escribirCSV("src\\main\\resources\\datosUsuarios.csv", datos);
+        System.out.println("Datos guardados en datosUsuarios.csv");
     }
 
     static void guardarDatosAdminEnCSV(Admin admin) {
         boolean adminEncontrado = false;
-        try (BufferedReader br = new BufferedReader(new FileReader("datos.csv"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("src\\main\\resources\\datosUsuarios.csv"))) {
             String linea;
 
             while ((linea = br.readLine()) != null) {
@@ -34,7 +34,7 @@ public interface DatosUsuariosYAdmin {
             if (!adminEncontrado) {
                 System.out.println("Admin no encontrado. Creando nuevo...");
                 String[] datosadmin = {admin.getNombre(), admin.getClave()};
-                escribirCSV("datos.csv", datosadmin);
+                escribirCSV("src\\main\\resources\\datosUsuarios.csv", datosadmin);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -53,7 +53,7 @@ public interface DatosUsuariosYAdmin {
     }
     static boolean buscarUsuarioyClave(String usuarioBuscado, String claveBuscado) {
         boolean permisos = true;
-        try (BufferedReader br = new BufferedReader(new FileReader("datos.csv"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("src\\main\\resources\\datosUsuarios.csv"))) {
             String linea;
             while ((linea = br.readLine()) != null) {
                 String[] datos = linea.split(",");
@@ -77,7 +77,7 @@ public interface DatosUsuariosYAdmin {
     }
     static boolean buscarUsuarioOAdmin(String usuarioBuscado, String claveBuscado) {
         boolean permisos = true;
-        try (BufferedReader br = new BufferedReader(new FileReader("datos.csv"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("src\\main\\resources\\datosUsuarios.csv"))) {
             String linea;
             while ((linea = br.readLine()) != null) {
                 String[] datos = linea.split(",");

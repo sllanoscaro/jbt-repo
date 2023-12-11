@@ -54,7 +54,7 @@ public class VentanaEdicion extends JFrame {
                     return;
                 }
 
-                DatosFunciones.actualizarDatosCSV(peliculaOriginal, nuevaPelicula, nuevoGenero, nuevoDirector, nuevaSinopsis, nuevaClasificacion);
+                DatosFunciones.actualizarDatosCSV(peliculaOriginal, nuevaPelicula, nuevoGenero, nuevoDirector, nuevaSinopsis, nuevaClasificacion,"","");
                 dispose();
                 VentanaFuncionesEditables ventanaFuncionesEditables = new VentanaFuncionesEditables();
             }
