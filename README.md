@@ -17,5 +17,6 @@
 9) (30/11) (Arturo Av.): Avance en el desarrollo con la implementacion de GUIS en la clase login, usuario y admin
 10) (09/12) (Arturo Av.): GUI de login terminada, GUI de menuAdmin terminado, implementacion de verFuncionesDisponibles y permite editar las funciones pero le falta arreglar un par de erorres
 11) (10/12) (Arturo Av.): GUI de ver funciones disponbiles para admin terminado y GUI de ver usuarios terminado igualmente, avance en GUI Menu Usuario pero no logre permitir que se compraran las butacas
+12) (11/12) (Arturo Av.): GUI que permite realizar resenas a los usuarios terminada y la GUI para ver las resenas como admin terminada igualmente.
 
 
