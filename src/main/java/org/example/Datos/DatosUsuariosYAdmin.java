@@ -98,6 +98,27 @@ public interface DatosUsuariosYAdmin {
         }
         return permisos;
     }
+    static boolean buscarUsuarioPorNombre(String usuarioBuscado) {
+        boolean usuarioEncontrado = false;
+        try (BufferedReader br = new BufferedReader(new FileReader("src\\main\\resources\\datosUsuarios.csv"))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] datos = linea.split(",");
+                if (usuarioBuscado.equals("admin") && datos.length >= 2) {
+                    usuarioEncontrado = true;
+                    return usuarioEncontrado;
+                } else if (datos[0].equals(usuarioBuscado)) {
+                    usuarioEncontrado = true;
+                    return usuarioEncontrado;
+                }
+            }
+            System.out.println("Usuario no encontrado con Usuario: " + usuarioBuscado);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return usuarioEncontrado;
+    }
+
     static DefaultTableModel mostrarDatosCSV(DefaultTableModel model){
         try (BufferedReader br = new BufferedReader(new FileReader("src\\main\\resources\\datosUsuarios.csv"))) {
             String line;

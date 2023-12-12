@@ -14,6 +14,7 @@ public class MenuParaUsuario extends JFrame {
     private JLabel usuario;
     private JLabel verFuncionesLabel;
     private JLabel hacerResenasLabel;
+    private JButton buttonCerrarSesion;
 
     public MenuParaUsuario(String nombre) {
         setTitle("Menu Usuario");

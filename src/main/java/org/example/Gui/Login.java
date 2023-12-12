@@ -56,11 +56,16 @@ public class Login extends JFrame {
                     JOptionPane.showMessageDialog(null, "Por favor, completa todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
+                if (DatosUsuariosYAdmin.buscarUsuarioPorNombre(usuario)){
+                    JOptionPane.showMessageDialog(null, "Un usuario con ese nombre ya existe, porfavor intente denuevo", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
 
                 Usuario usuario1 = new Usuario();
                 usuario1.setNombre(usuario);
                 usuario1.setClave(clave);
                 DatosUsuariosYAdmin.guardarDatosEnCSV(usuario1);
+                JOptionPane.showMessageDialog(null, "Cuenta creada exitosamente", "Cuenta creada", JOptionPane.ERROR_MESSAGE);
                 usuarioText.setText("");
                 claveText.setText("");
             }
