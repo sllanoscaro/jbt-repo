@@ -46,8 +46,6 @@ public class VentanaEdicion extends JFrame {
 
 
 
-
-
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

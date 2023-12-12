@@ -69,6 +69,13 @@ public class MenuAdmin extends JFrame {
                 VentanaAdminVerResenas ventanaAdminVerResenas = new VentanaAdminVerResenas();
             }
         });
+        botonTicketVendidos.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                VerTicketsAdmin verTicketsAdmin = new VerTicketsAdmin();
+            }
+        });
 
 
 

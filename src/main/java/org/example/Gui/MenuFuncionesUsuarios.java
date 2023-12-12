@@ -50,10 +50,11 @@ public class MenuFuncionesUsuarios extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = dataTable.getSelectedRow();
                 if (selectedRow != -1) {
+                    String pelicula = (String) model.getValueAt(selectedRow, 0);
                     String numeroSala = (String) model.getValueAt(selectedRow, 5);
                     String horario = (String) model.getValueAt(selectedRow, 6);
                     Sala sala = new Sala(numeroSala,horario);
-                    new VentanaSeleccionButacas(sala,nombre);
+                    new VentanaSeleccionButacas(sala,nombre,pelicula);
 
                 } else {
                     JOptionPane.showMessageDialog(MenuFuncionesUsuarios.this, "Por favor, selecciona una fila para comprar.");

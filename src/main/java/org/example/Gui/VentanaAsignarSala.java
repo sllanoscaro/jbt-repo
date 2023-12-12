@@ -42,6 +42,11 @@ public class VentanaAsignarSala extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                if (numeroSalaField1.getText().isEmpty() || horarioField2.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Por favor, completa todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
 
                 String numeroSala = numeroSalaField1.getText();
                 String horario = horarioField2.getText();

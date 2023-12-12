@@ -41,6 +41,11 @@ public class HacerResena extends JFrame {
         hacerResenaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                if (resenaTextField.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Por favor, completa todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
                 Funcion funcion = new Funcion(pelicula, genero, director, sinopsis, clasificacion, resenaTextField.getText());
                 Sala sala = new Sala("", "");
                 DatosFunciones.guardarDatosResenas(nombre, funcion, sala);

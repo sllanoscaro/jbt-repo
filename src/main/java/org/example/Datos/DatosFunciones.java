@@ -76,6 +76,18 @@ public interface DatosFunciones {
         }
         return model;
     }
+    static DefaultTableModel mostrarTicketsCSV(DefaultTableModel model){
+        try (BufferedReader br = new BufferedReader(new FileReader("src\\main\\resources\\tickets.csv"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                model.addRow(data);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return model;
+    }
     static void actualizarDatosCSV(String peliculaOriginal, String nuevaPelicula, String nuevoGenero, String nuevoDirector, String nuevaSinopsis, String nuevaClasificacion, String numeroSala, String horario) {
         String nombreArchivo = "src\\main\\resources\\peliculas.csv";
         String lineaActual;

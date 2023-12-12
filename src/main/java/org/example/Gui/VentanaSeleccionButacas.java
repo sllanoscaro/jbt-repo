@@ -17,13 +17,13 @@ public class VentanaSeleccionButacas extends JFrame {
     private List<JButton> selectedSeats;
 
 
-    public VentanaSeleccionButacas(Sala sala, String nombre) {
+    public VentanaSeleccionButacas(Sala sala, String nombre, String pelicula) {
         this.sala = sala;
         this.selectedSeats = new ArrayList<>();
-        initComponents(nombre);
+        initComponents(nombre,pelicula);
     }
 
-    private void initComponents(String nombre) {
+    private void initComponents(String nombre,String pelicula) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Sala de Cine - Sala " + sala.getNumeroSala() + " - Horario: " + sala.getHorario());
 
@@ -63,7 +63,7 @@ public class VentanaSeleccionButacas extends JFrame {
         confirmButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                confirmSelection(nombre);
+                confirmSelection(nombre,pelicula);
             }
         });
 
@@ -90,7 +90,7 @@ public class VentanaSeleccionButacas extends JFrame {
         }
     }
 
-    private void confirmSelection(String nombre) {
+    private void confirmSelection(String nombre, String pelicula) {
         if (selectedSeats.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, selecciona al menos un asiento antes de confirmar la compra.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -109,7 +109,7 @@ public class VentanaSeleccionButacas extends JFrame {
                 sala.getButacas()[row][col] = true;
 
                 // Escribir la información en el archivo CSV
-                writer.write(nombre + "," + seat + "," + salaInfo);
+                writer.write(nombre + "," + pelicula + "," + seat + "," + salaInfo);
                 writer.newLine();
 
                 // Actualizar el color del botón (puedes cambiarlo según sea necesario)
