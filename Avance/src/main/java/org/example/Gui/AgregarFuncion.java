@@ -34,7 +34,7 @@ public class AgregarFuncion extends JFrame{
         panel.setLayout(new GridLayout(6, 2)); // Use an appropriate layout manager
 
 
-        Funcion funcion = new Funcion(peliculaText.getText(),directorText.getText(),generoText.getText(),sinopsisText.getText(),clasificacionText.getText());
+        Funcion funcion = new Funcion(peliculaText.getText(),directorText.getText(),generoText.getText(),sinopsisText.getText(),clasificacionText.getText(),"");
         Sala sala = new Sala("","");
         DatosFunciones.guardarDatosPeliculasEnCSV(funcion,sala);
 
@@ -48,7 +48,7 @@ public class AgregarFuncion extends JFrame{
                     return;
                 }
 
-                Funcion funcion = new Funcion(peliculaText.getText(),generoText.getText(),directorText.getText(),sinopsisText.getText(),clasificacionText.getText());
+                Funcion funcion = new Funcion(peliculaText.getText(),generoText.getText(),directorText.getText(),sinopsisText.getText(),clasificacionText.getText(),"");
                 Sala sala = new Sala("","");
                 DatosFunciones.guardarDatosPeliculasEnCSV(funcion,sala);
                 dispose();

@@ -5,26 +5,19 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.*;
-import java.util.HashSet;
-import java.util.Set;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-
-
 import org.example.Datos.DatosFunciones;
-import org.example.Modelo.Sala;
+import org.example.Modelo.Funcion;
 
-public class MenuUsuario extends JFrame {
+
+public class FuncionesParaResenas extends JFrame {
     private JTable dataTable;
     private JPanel panel;
-    private JButton comprarButton;
+    private JButton hacerResenaButton;
+
     private JButton volverButton;
 
 
-    public MenuUsuario(String nombre) {
+    public FuncionesParaResenas(String nombre) {
         setTitle("Funciones Editables");
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,61 +31,59 @@ public class MenuUsuario extends JFrame {
         model.addColumn("Director");
         model.addColumn("Sinopsis");
         model.addColumn("Clasificación");
-        model.addColumn("Numero de Sala");
-        model.addColumn("Horario");
 
         panel = new JPanel();
 
-        DatosFunciones.mostrarDatosFuncionesCSV(model);
+        DatosFunciones.mostrarDatosCSV(model);
 
         dataTable = new JTable(model);
 
         panel.setLayout(new BorderLayout());
         panel.add(new JScrollPane(dataTable), BorderLayout.CENTER);
 
-        comprarButton = new JButton("Comprar");
-        volverButton = new JButton("volver");
-        comprarButton.addActionListener(new ActionListener() {
+        // Instantiate the buttons
+        hacerResenaButton = new JButton("Hacer Resena");
+        volverButton = new JButton("Volver");
+
+
+
+        hacerResenaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = dataTable.getSelectedRow();
                 if (selectedRow != -1) {
-                    String pelicula = (String) model.getValueAt(selectedRow, 0);
-                    String numeroSala = (String) model.getValueAt(selectedRow, 5);
-                    String horario = (String) model.getValueAt(selectedRow, 6);
-                    Sala sala = new Sala(numeroSala,horario);
-                    new VentanaSeleccionButacas(sala);
+                    String pelicula = (String) dataTable.getValueAt(selectedRow, 0);
+                    String genero = (String) dataTable.getValueAt(selectedRow, 1);
+                    String director = (String) dataTable.getValueAt(selectedRow, 2);
+                    String sinopsis = (String) dataTable.getValueAt(selectedRow, 3);
+                    String clasificacion = (String) dataTable.getValueAt(selectedRow, 4);
 
+                    new HacerResena(pelicula, genero, director, sinopsis, clasificacion);
                 } else {
-                    JOptionPane.showMessageDialog(MenuUsuario.this, "Por favor, selecciona una fila para comprar.");
+                    JOptionPane.showMessageDialog(null, "Selecciona una fila para editar.");
                 }
+                dispose();
             }
         });
+
 
         volverButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 MenuParaUsuario menuParaUsuario = new MenuParaUsuario(nombre);
-                }
-
+            }
         });
 
+        // Add both buttons to the panel
         JPanel buttonPanel = new JPanel();
-        buttonPanel.add(comprarButton);
+        buttonPanel.add(hacerResenaButton);
         buttonPanel.add(volverButton);
 
         panel.add(buttonPanel, BorderLayout.SOUTH);
-
 
         add(panel);
 
         setVisible(true);
     }
-
-    public JTable getDataTable() {
-        return dataTable;
-    }
-
-
 }

@@ -85,7 +85,7 @@ public class Login extends JFrame {
                     else{
                         JOptionPane.showMessageDialog(null, "Eres usuario bestia", "Bienvenido", JOptionPane.WARNING_MESSAGE);
                         dispose();
-                        MenuUsuario menuUsuario = new MenuUsuario();
+                        MenuParaUsuario menuParaUsuario = new MenuParaUsuario(usuarioText.getText());
 
                     }
                 }

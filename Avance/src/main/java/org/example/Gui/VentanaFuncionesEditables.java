@@ -60,7 +60,7 @@ public class VentanaFuncionesEditables extends JFrame {
                     String director = (String) dataTable.getValueAt(selectedRow, 2);
                     String sinopsis = (String) dataTable.getValueAt(selectedRow, 3);
                     String clasificacion = (String) dataTable.getValueAt(selectedRow, 4);
-                    Funcion funcion = new Funcion(pelicula,genero,director,sinopsis,clasificacion);
+                    Funcion funcion = new Funcion(pelicula,genero,director,sinopsis,clasificacion,"");
 
                     new VentanaAsignarSala(funcion);
                 } else {

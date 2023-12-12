@@ -13,7 +13,9 @@ public class Funcion {
 
 
     private String clasificacion;
-    private float rating;
+
+
+    private String rating;
 
 
 
@@ -21,12 +23,13 @@ public class Funcion {
 
 
 
-    public Funcion(String nombre, String genero, String director, String sinopsis, String clasificacion) {
+    public Funcion(String nombre, String genero, String director, String sinopsis, String clasificacion, String rating) {
         this.nombre = nombre;
         this.genero = genero;
         this.director = director;
         this.sinopsis = sinopsis;
         this.clasificacion = clasificacion;
+        this.rating =rating;
         this.salas = new ArrayList<>();
     }
     public void agregarSala(Sala sala) {
@@ -109,6 +112,13 @@ public class Funcion {
     }
     public List<Sala> getSalas() {
         return salas;
+    }
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
     }
 
 
