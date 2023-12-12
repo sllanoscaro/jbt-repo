@@ -18,5 +18,7 @@
 10) (09/12) (Arturo Av.): GUI de login terminada, GUI de menuAdmin terminado, implementacion de verFuncionesDisponibles y permite editar las funciones pero le falta arreglar un par de erorres
 11) (10/12) (Arturo Av.): GUI de ver funciones disponbiles para admin terminado y GUI de ver usuarios terminado igualmente, avance en GUI Menu Usuario pero no logre permitir que se compraran las butacas
 12) (11/12) (Arturo Av.): GUI que permite realizar resenas a los usuarios terminada y la GUI para ver las resenas como admin terminada igualmente.
+13) (11/12) (Lian Ca.): Realice la ventana que permite comprar una butaca e escribir en un csv el ticket con los datos de la funcion comprada y la butaca
+14) (11/12) (Arturo Av. / Lian Ca.): Unimos los codigos para que funcione todo correctamente
 
 
