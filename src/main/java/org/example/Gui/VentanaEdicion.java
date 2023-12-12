@@ -19,7 +19,7 @@ public class VentanaEdicion extends JFrame {
     private JLabel directorLabel;
     private JLabel sinopsisLabel;
     private JLabel clasificacionLabel;
-    private JLabel vacio;
+
     private JButton guardarButton;
 
     private String peliculaOriginal;
@@ -29,7 +29,7 @@ public class VentanaEdicion extends JFrame {
     public VentanaEdicion(String pelicula, String genero, String director, String sinopsis, String clasificacion) {
         setTitle("Editar Datos");
         setSize(400, 300);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Cierra solo la ventana de edición
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
         peliculaOriginal = pelicula;
@@ -37,6 +37,13 @@ public class VentanaEdicion extends JFrame {
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(6, 2));
+
+        peliculaField1.setText(pelicula);
+        generoField2.setText(genero);
+        directorField3.setText(director);
+        sinopsisField4.setText(sinopsis);
+        clasificacionField5.setText(clasificacion);
+
 
 
 

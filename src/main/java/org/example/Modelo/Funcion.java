@@ -69,47 +69,6 @@ public class Funcion {
         this.director = director;
     }
 
-    public  boolean[][] reservarAsiento(boolean[][] matriz, int columna, char fila) {
-        if (columna >= 1 && columna <= matriz.length && fila >= 'A' && fila < 'A' + matriz[0].length) {
-            int columnaIndex = columna - 1;
-            int filaIndex = fila - 'A';
-            if (matriz[filaIndex][columnaIndex] != true) {
-                matriz[filaIndex][columnaIndex] = true;
-                System.out.println("¡Compra exitosa! Ha comprado el asiento " + columna + fila);
-            } else {
-                System.out.println("Este asiento ya está ocupado. Por favor, seleccione otro.");
-            }
-        } else {
-            System.out.println("Ubicación de asiento no válida. Por favor, ingrese una ubicación válida.");
-        }
-        return matriz;
-    }
-    public String[][] marcarAsientoOcupado(String[][] matriz, int columna, char fila) {
-        if (columna >= 1 && columna <= matriz[0].length && fila >= 'A' && fila < 'A' + matriz.length) {
-            // Convertir la fila a índice de matriz
-            int columnaIndex = columna - 1;
-            int filaIndex = fila - 'A';
-
-            if (!matriz[filaIndex][columnaIndex].equals("X")) {
-                matriz[filaIndex][columnaIndex] = "X"; // Marcar el asiento como ocupado
-                System.out.println("¡Compra exitosa! Ha comprado el asiento " + columna + fila);
-            } else {
-                System.out.println("Este asiento ya está ocupado. Por favor, seleccione otro.");
-            }
-        } else {
-            System.out.println("Ubicación de asiento no válida. Por favor, ingrese una ubicación válida.");
-        }
-        return matriz;
-    }
-
-    public static Funcion obtenerFuncionPorPelicula(String pelicula) {
-        for (Funcion funcion : listaFunciones) {
-            if (funcion.getNombre().equals(pelicula)) {
-                return funcion;
-            }
-        }
-        return null;  // No se encontró la función
-    }
     public List<Sala> getSalas() {
         return salas;
     }

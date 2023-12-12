@@ -15,16 +15,20 @@ import org.example.Modelo.Sala;
 import org.example.Modelo.Admin;
 public interface DatosFunciones {
     static void guardarDatosFuncionesEnCSV(Funcion funcion, Sala sala) {
-        String[] datos = {funcion.getNombre(), funcion.getGenero(),funcion.getDirector(),funcion.getSinopsis(),funcion.getClasificacion(),sala.getHorario(),sala.getNumeroSala(),funcion.getRating()};
+        String[] datos = {funcion.getNombre(), funcion.getGenero(),funcion.getDirector(),funcion.getSinopsis(),funcion.getClasificacion(),sala.getNumeroSala(),sala.getHorario(),funcion.getRating()};
         escribirCSV("src\\main\\resources\\datosFunciones.csv", datos);
         System.out.println("Datos guardados en datosFunciones.csv");
     }
     static void guardarDatosPeliculasEnCSV(Funcion funcion, Sala sala) {
-        String[] datos = {funcion.getNombre(), funcion.getGenero(),funcion.getDirector(),funcion.getSinopsis(),funcion.getClasificacion(),sala.getHorario(),sala.getNumeroSala(),funcion.getRating()};
-        escribirCSV("src\\main\\resources\\funciones.csv", datos);
-        System.out.println("Datos guardados en funciones.csv");
+        String[] datos = {funcion.getNombre(), funcion.getGenero(),funcion.getDirector(),funcion.getSinopsis(),funcion.getClasificacion(),sala.getNumeroSala(),sala.getHorario(),funcion.getRating()};
+        escribirCSV("src\\main\\resources\\peliculas.csv", datos);
+        System.out.println("Datos guardados en peliculas.csv");
     }
-
+    static void guardarDatosResenas(String nombre, Funcion funcion, Sala sala) {
+        String[] datos = {nombre,funcion.getNombre(), funcion.getGenero(),funcion.getDirector(),funcion.getSinopsis(),funcion.getClasificacion(),sala.getNumeroSala(),sala.getHorario(),funcion.getRating()};
+        escribirCSV("src\\main\\resources\\resenas.csv", datos);
+        System.out.println("Datos guardados en resenas.csv");
+    }
 
     static void escribirCSV(String nombreArchivo, String[] datos) {
         try (FileWriter writer = new FileWriter(nombreArchivo, true)) {
@@ -49,7 +53,7 @@ public interface DatosFunciones {
         return model;
     }
     static DefaultTableModel mostrarDatosCSV(DefaultTableModel model){
-        try (BufferedReader br = new BufferedReader(new FileReader("src\\main\\resources\\funciones.csv"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("src\\main\\resources\\peliculas.csv"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
@@ -60,8 +64,20 @@ public interface DatosFunciones {
         }
         return model;
     }
-    static void actualizarDatosCSV(String peliculaOriginal, String nuevaPelicula, String nuevoGenero, String nuevoDirector, String nuevaSinopsis, String nuevaClasificacion, String horario, String numeroSala) {
-        String nombreArchivo = "src\\main\\resources\\funciones.csv";
+    static DefaultTableModel mostrarResenasCSV(DefaultTableModel model){
+        try (BufferedReader br = new BufferedReader(new FileReader("src\\main\\resources\\resenas.csv"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                model.addRow(data);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return model;
+    }
+    static void actualizarDatosCSV(String peliculaOriginal, String nuevaPelicula, String nuevoGenero, String nuevoDirector, String nuevaSinopsis, String nuevaClasificacion, String numeroSala, String horario) {
+        String nombreArchivo = "src\\main\\resources\\peliculas.csv";
         String lineaActual;
         String[] datos;
         StringBuilder nuevoContenido = new StringBuilder();
@@ -70,7 +86,7 @@ public interface DatosFunciones {
             while ((lineaActual = br.readLine()) != null) {
                 datos = lineaActual.split(",");
                 if (datos.length > 0 && datos[0].equals(peliculaOriginal)) {
-                    nuevoContenido.append(nuevaPelicula).append(",").append(nuevoGenero).append(",").append(nuevoDirector).append(",").append(nuevaSinopsis).append(",").append(nuevaClasificacion).append(",").append(horario).append(",").append(numeroSala).append("\n");
+                    nuevoContenido.append(nuevaPelicula).append(",").append(nuevoGenero).append(",").append(nuevoDirector).append(",").append(nuevaSinopsis).append(",").append(nuevaClasificacion).append(",").append(numeroSala).append(",").append(horario).append("\n");
                 } else {
                     nuevoContenido.append(lineaActual).append("\n");
                 }
@@ -84,27 +100,6 @@ public interface DatosFunciones {
             e.printStackTrace();
         }
     }
-    public static List<Funcion> leerFuncionesDesdeCSV(String archivo) {
-        List<Funcion> funciones = new ArrayList<>();
 
-        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
-            String linea;
-            while ((linea = br.readLine()) != null) {
-                String[] datos = linea.split(",");
-                String nombre = datos[0].trim();
-                String genero = datos[1].trim();
-                String director = datos[2].trim();
-                String sinopsis = datos[3].trim();
-                String clasificacion = datos[4].trim();
-
-                Funcion funcion = new Funcion(nombre, genero, director, sinopsis, clasificacion,"");
-                funciones.add(funcion);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return funciones;
-    }
 
 }

@@ -62,6 +62,13 @@ public class MenuAdmin extends JFrame {
                 VerUsuarios verUsuarios = new VerUsuarios();
             }
         });
+        botonResenas.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                VentanaAdminVerResenas ventanaAdminVerResenas = new VentanaAdminVerResenas();
+            }
+        });
 
 
 

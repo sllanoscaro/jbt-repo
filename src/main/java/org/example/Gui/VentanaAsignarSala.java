@@ -20,13 +20,13 @@ public class VentanaAsignarSala extends JFrame {
 
     private JButton asignarButton;
 
-    private String peliculaOriginal;
+
 
 
     public VentanaAsignarSala(Funcion funcion) {
         setTitle("Editar Datos");
         setSize(400, 300);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Cierra solo la ventana de edición
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
 

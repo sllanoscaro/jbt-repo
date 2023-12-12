@@ -31,13 +31,7 @@ public class AgregarFuncion extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        panel.setLayout(new GridLayout(6, 2)); // Use an appropriate layout manager
-
-
-        Funcion funcion = new Funcion(peliculaText.getText(),directorText.getText(),generoText.getText(),sinopsisText.getText(),clasificacionText.getText(),"");
-        Sala sala = new Sala("","");
-        DatosFunciones.guardarDatosPeliculasEnCSV(funcion,sala);
-
+        panel.setLayout(new GridLayout(6, 2));
 
         crearPeliculaButton.addActionListener(new ActionListener() {
             @Override
@@ -51,6 +45,7 @@ public class AgregarFuncion extends JFrame{
                 Funcion funcion = new Funcion(peliculaText.getText(),generoText.getText(),directorText.getText(),sinopsisText.getText(),clasificacionText.getText(),"");
                 Sala sala = new Sala("","");
                 DatosFunciones.guardarDatosPeliculasEnCSV(funcion,sala);
+                VentanaFuncionesEditables ventanaFuncionesEditables = new VentanaFuncionesEditables();
                 dispose();
 
             }

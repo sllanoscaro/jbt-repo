@@ -71,7 +71,7 @@ public class Login extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (usuarioText.getText().isEmpty() || claveText.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Por favor, completa todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
-                    return;  // No continuar si hay campos vacíos
+                    return;
                 }
 
                 if (DatosUsuariosYAdmin.buscarUsuarioyClave(usuarioText.getText(), claveText.getText())){
@@ -85,7 +85,7 @@ public class Login extends JFrame {
                     else{
                         JOptionPane.showMessageDialog(null, "Eres usuario bestia", "Bienvenido", JOptionPane.WARNING_MESSAGE);
                         dispose();
-                        MenuUsuario menuUsuario = new MenuUsuario();
+                        MenuParaUsuario menuParaUsuario = new MenuParaUsuario(usuarioText.getText());
 
                     }
                 }

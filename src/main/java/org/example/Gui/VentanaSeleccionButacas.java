@@ -1,97 +1,134 @@
 package org.example.Gui;
 
+import org.example.Modelo.Sala;
+
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class VentanaSeleccionButacas extends JFrame {
-    private MenuUsuario menuUsuario;
-    private String pelicula;
-    private String numeroSala;
-    private String horario;
-    private JComboBox<String> butacasComboBox;
-    private String butacaSeleccionada;
+    private Sala sala;
+    private List<JButton> selectedSeats;
 
 
-    public VentanaSeleccionButacas(MenuUsuario menuUsuario, DefaultTableModel model, String pelicula, String numeroSala, String horario) {
-        this.menuUsuario = menuUsuario;
-        this.pelicula = pelicula;
-        this.numeroSala = numeroSala;
-        this.horario = horario;
+    public VentanaSeleccionButacas(Sala sala, String nombre) {
+        this.sala = sala;
+        this.selectedSeats = new ArrayList<>();
+        initComponents(nombre);
+    }
 
-        setTitle("Seleccionar Butacas");
-        setSize(300, 200);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setLocationRelativeTo(null);
+    private void initComponents(String nombre) {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Sala de Cine - Sala " + sala.getNumeroSala() + " - Horario: " + sala.getHorario());
 
-        JPanel panel = new JPanel(new GridLayout(3, 2));
+        JPanel panel = new JPanel(new GridLayout(13, 12, 5, 5));
 
-        JLabel peliculaLabel = new JLabel("Película:");
-        JLabel salaLabel = new JLabel("Número de Sala:");
-        JLabel horarioLabel = new JLabel("Horario:");
-        JLabel butacasLabel = new JLabel("Seleccionar Butaca:");
+        panel.add(new JLabel());
+        for (char c = 'A'; c <= 'L'; c++) {
+            panel.add(new JLabel(String.valueOf(c), SwingConstants.CENTER));
+        }
 
-        JTextField peliculaTextField = new JTextField(pelicula);
-        JTextField salaTextField = new JTextField(numeroSala);
-        JTextField horarioTextField = new JTextField(horario);
+        for (int i = 0; i < sala.getButacas().length; i++) {
 
-        butacasComboBox = new JComboBox<>();
-        // Cambia esta llamada para obtener las butacas disponibles desde tu lógica específica
-        llenarButacasDisponibles(model);
+            panel.add(new JLabel(String.valueOf(i + 1), SwingConstants.CENTER));
 
-        JButton comprarButacaButton = new JButton("Comprar Butaca");
+            for (int j = 0; j < sala.getButacas()[i].length; j++) {
+                JButton button = new JButton();
+                button.setPreferredSize(new Dimension(40, 40));
 
-        comprarButacaButton.addActionListener(new ActionListener() {
+                if (sala.getButacas()[i][j]) {
+                    button.setBackground(Color.RED);
+                    button.setEnabled(false);
+                } else {
+                    button.setBackground(Color.GREEN);
+                    button.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            toggleSeatSelection(button);
+                        }
+                    });
+                }
+
+                panel.add(button);
+            }
+        }
+
+        JButton confirmButton = new JButton("Comprar");
+        confirmButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                butacaSeleccionada = (String) butacasComboBox.getSelectedItem();
-                // Realiza la lógica para procesar la compra de la butaca
-                JOptionPane.showMessageDialog(VentanaSeleccionButacas.this,
-                        "Compra realizada:\nPelícula: " + pelicula + "\nNúmero de Sala: " + numeroSala +
-                                "\nHorario: " + horario + "\nButaca: " + butacaSeleccionada);
-                // Cierra la ventana
-                dispose();
+                confirmSelection(nombre);
             }
         });
 
-        panel.add(peliculaLabel);
-        panel.add(peliculaTextField);
-        panel.add(salaLabel);
-        panel.add(salaTextField);
-        panel.add(horarioLabel);
-        panel.add(horarioTextField);
-        panel.add(butacasLabel);
-        panel.add(butacasComboBox);
-        panel.add(comprarButacaButton);
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.add(confirmButton);
 
-        add(panel);
+        add(panel, BorderLayout.CENTER);
+        add(buttonPanel, BorderLayout.SOUTH);
 
+        pack();
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 
-    // Cambia esta lógica según tu implementación real para cargar butacas disponibles
-    private void llenarButacasDisponibles(DefaultTableModel model) {
-        // Ejemplo de butacas de prueba
-        butacasComboBox.addItem("A1");
-        butacasComboBox.addItem("A2");
-        butacasComboBox.addItem("B1");
-        butacasComboBox.addItem("B2");
+    private void toggleSeatSelection(JButton button) {
+        if (selectedSeats.contains(button)) {
+            // Desseleccionar el asiento
+            button.setBackground(Color.GREEN);
+            selectedSeats.remove(button);
+        } else {
 
-        // Elimina la butaca comprada de las disponibles
-        int rowCount = model.getRowCount();
-        for (int i = 0; i < rowCount; i++) {
-            Object salaEnTablaObject = model.getValueAt(i, 5);
-            if (salaEnTablaObject != null) {
-                String salaEnTabla = salaEnTablaObject.toString();
-                if (numeroSala.equals(salaEnTabla)) {
-                    butacasComboBox.removeItem(salaEnTabla);
-                    break;  // Puedes remover este break si hay más de una fila con la misma sala
-                }
-            }
-        }}
-    public String getButacaSeleccionada() {
-        return butacaSeleccionada;
+            button.setBackground(Color.YELLOW);
+            selectedSeats.add(button);
+        }
     }
+
+    private void confirmSelection(String nombre) {
+        if (selectedSeats.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, selecciona al menos un asiento antes de confirmar la compra.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String salaInfo = "Sala " + sala.getNumeroSala() + " - Horario: " + sala.getHorario();
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/tickets.csv", true))) {
+            for (JButton button : selectedSeats) {
+                int row = (button.getY() - 2) / (button.getHeight() + 5);
+                int col = (button.getX() - 2) / (button.getWidth() + 5);
+
+                String seat = "(" + (row + 1) + "-" + (char) ('A' + col) + ")";
+
+                // Actualizar el booleano de la sala
+                sala.getButacas()[row][col] = true;
+
+                // Escribir la información en el archivo CSV
+                writer.write(nombre + "," + seat + "," + salaInfo);
+                writer.newLine();
+
+                // Actualizar el color del botón (puedes cambiarlo según sea necesario)
+                button.setBackground(Color.RED);
+                button.setEnabled(false);
+            }
+
+            // Limpiar la lista de asientos seleccionados
+            selectedSeats.clear();
+
+            // Mostrar el mensaje con los asientos comprados
+            JOptionPane.showMessageDialog(this, "Compra Exitosa", "Compra Exitosa", JOptionPane.INFORMATION_MESSAGE);
+
+            // Cerrar la ventana
+            dispose();
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al guardar la información en el archivo CSV.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
 }
