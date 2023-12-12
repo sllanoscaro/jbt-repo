@@ -80,7 +80,6 @@ public class VentanaSeleccionButacas extends JFrame {
 
     private void toggleSeatSelection(JButton button) {
         if (selectedSeats.contains(button)) {
-            // Desseleccionar el asiento
             button.setBackground(Color.GREEN);
             selectedSeats.remove(button);
         } else {
@@ -105,25 +104,19 @@ public class VentanaSeleccionButacas extends JFrame {
 
                 String seat = "(" + (row + 1) + "-" + (char) ('A' + col) + ")";
 
-                // Actualizar el booleano de la sala
                 sala.getButacas()[row][col] = true;
 
-                // Escribir la información en el archivo CSV
                 writer.write(nombre + "," + pelicula + "," + seat + "," + salaInfo);
                 writer.newLine();
 
-                // Actualizar el color del botón (puedes cambiarlo según sea necesario)
                 button.setBackground(Color.RED);
                 button.setEnabled(false);
             }
 
-            // Limpiar la lista de asientos seleccionados
             selectedSeats.clear();
 
-            // Mostrar el mensaje con los asientos comprados
             JOptionPane.showMessageDialog(this, "Compra Exitosa", "Compra Exitosa", JOptionPane.INFORMATION_MESSAGE);
 
-            // Cerrar la ventana
             dispose();
         } catch (IOException e) {
             e.printStackTrace();

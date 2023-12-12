@@ -1,7 +1,5 @@
 package org.example.Gui;
 
-import org.example.Modelo.Funcion;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -18,8 +16,8 @@ public class MenuAdmin extends JFrame {
     private JLabel verFuncionesDisponiblesLabel;
     private JLabel verResenasLabel;
     private JLabel verRegistroDeUsariosLabel;
-    private JLabel adminLabel;
     private JLabel titulo;
+    private JButton cerrarSesionButton;
 
     public MenuAdmin() {
         setTitle("Menu Admin");
@@ -32,7 +30,7 @@ public class MenuAdmin extends JFrame {
         panel = new JPanel();
         panel.setLayout(new GridLayout(5, 2, 10, 10));
         panel.add(titulo);
-        panel.add(adminLabel);
+        panel.add(cerrarSesionButton);
         panel.add(verRegistroDeUsariosLabel);
         panel.add(verFuncionesDisponiblesLabel);
         panel.add(botonUsuarios);
@@ -74,6 +72,13 @@ public class MenuAdmin extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 VerTicketsAdmin verTicketsAdmin = new VerTicketsAdmin();
+            }
+        });
+        cerrarSesionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                Login login = new Login();
             }
         });
 
