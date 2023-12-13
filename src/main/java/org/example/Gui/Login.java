@@ -45,6 +45,9 @@ public class Login extends JFrame {
         Admin admin1 = new Admin();
         DatosUsuariosYAdmin.guardarDatosAdminEnCSV(admin1);
 
+        /**
+         * crea la cuenta con los datos de los TextField
+         */
         crearcuenta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -71,6 +74,9 @@ public class Login extends JFrame {
             }
         });
 
+        /**
+         * inicia sesion con los datos de los TextField
+         */
         iniciarsesion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

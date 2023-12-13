@@ -45,6 +45,10 @@ public class MenuFuncionesUsuarios extends JFrame {
 
         comprarButton = new JButton("Comprar");
         volverButton = new JButton("volver");
+
+        /**
+         * abre la ventanaSeleccionButacas con los datos de la fila seleccionada
+         */
         comprarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -62,6 +66,9 @@ public class MenuFuncionesUsuarios extends JFrame {
             }
         });
 
+        /**
+         * vuelve a menuParaUsuario
+         */
         volverButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

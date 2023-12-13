@@ -12,12 +12,20 @@ import javax.swing.table.DefaultTableModel;
 
 public interface DatosUsuariosYAdmin {
 
+    /**
+     * Guarda los datos de usuario en un csv
+     * @param usuario recibe un usuario y los separa por nombre y clave
+     */
     static void guardarDatosEnCSV(Usuario usuario) {
         String[] datos = {usuario.getNombre(), usuario.getClave()};
         escribirCSV("src\\main\\resources\\datosUsuarios.csv", datos);
         System.out.println("Datos guardados en datosUsuarios.csv");
     }
 
+    /**
+     * revisa si existe una cuenta admin en el csv y si no existe la crea
+     * @param admin recibe un admin y los separa por usuario y clave
+     */
     static void guardarDatosAdminEnCSV(Admin admin) {
         boolean adminEncontrado = false;
         try (BufferedReader br = new BufferedReader(new FileReader("src\\main\\resources\\datosUsuarios.csv"))) {
@@ -43,6 +51,11 @@ public interface DatosUsuariosYAdmin {
         }
     }
 
+    /**
+     * Escribe un csv con el nombre de archivo entregado y la lista de datos
+     * @param nombreArchivo recibe el nombre de archivo
+     * @param datos recibe los datos
+     */
     static void escribirCSV(String nombreArchivo, String[] datos) {
         try (FileWriter writer = new FileWriter(nombreArchivo, true)) {
             for (String dato : datos) {
@@ -53,6 +66,13 @@ public interface DatosUsuariosYAdmin {
             e.printStackTrace();
         }
     }
+
+    /**
+     * busca el usuario si esta en datosUsarios.csv
+     * @param usuarioBuscado el usuario que busca
+     * @param claveBuscado la clave que busca
+     * @return
+     */
     static boolean buscarUsuarioyClave(String usuarioBuscado, String claveBuscado) {
         boolean permisos = true;
         try (BufferedReader br = new BufferedReader(new FileReader("src\\main\\resources\\datosUsuarios.csv"))) {
@@ -77,6 +97,13 @@ public interface DatosUsuariosYAdmin {
         }
         return permisos;
     }
+
+    /**
+     * busca si existe un admin en datosUsuarios.csv
+     * @param usuarioBuscado usuario buscado
+     * @param claveBuscado clave buscada
+     * @return
+     */
     static boolean buscarUsuarioOAdmin(String usuarioBuscado, String claveBuscado) {
         boolean permisos = true;
         Admin admin = new Admin();
@@ -99,6 +126,12 @@ public interface DatosUsuariosYAdmin {
         }
         return permisos;
     }
+
+    /**
+     * busca el usuario por nombre para ver si ya existe una cuenta creada por ese nombre
+     * @param usuarioBuscado el nombre del usuario que se busca
+     * @return
+     */
     static boolean buscarUsuarioPorNombre(String usuarioBuscado) {
         boolean usuarioEncontrado = false;
         Admin admin = new Admin();
@@ -121,6 +154,12 @@ public interface DatosUsuariosYAdmin {
         return usuarioEncontrado;
     }
 
+
+    /**
+     * muestra los datos de datosUsuarios.csv
+     * @param model el table model que recibe para mostrar los datos
+     * @return
+     */
     static DefaultTableModel mostrarDatosCSV(DefaultTableModel model){
         try (BufferedReader br = new BufferedReader(new FileReader("src\\main\\resources\\datosUsuarios.csv"))) {
             String line;

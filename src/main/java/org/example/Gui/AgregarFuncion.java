@@ -33,6 +33,9 @@ public class AgregarFuncion extends JFrame{
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         panel.setLayout(new GridLayout(6, 2));
 
+        /**
+         * obtiene el texto de los TextField  y los guarda en peliculas.csv
+         */
         crearPeliculaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

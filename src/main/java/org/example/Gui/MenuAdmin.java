@@ -44,7 +44,9 @@ public class MenuAdmin extends JFrame {
         add(panel);
         setVisible(true);
 
-
+/**
+ * abre la ventana funciones disponibles
+ */
         botonFuncionesDisponibles.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -52,7 +54,9 @@ public class MenuAdmin extends JFrame {
                 VentanaFuncionesEditables ventanaFuncionesEditables = new VentanaFuncionesEditables();
             }
         });
-
+        /**
+        * abre la ventana verUsuarios
+        */
         botonUsuarios.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -60,6 +64,10 @@ public class MenuAdmin extends JFrame {
                 VerUsuarios verUsuarios = new VerUsuarios();
             }
         });
+
+        /**
+         * abre la ventana ventanaAdminVerResenas
+         */
         botonResenas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -67,6 +75,10 @@ public class MenuAdmin extends JFrame {
                 VentanaAdminVerResenas ventanaAdminVerResenas = new VentanaAdminVerResenas();
             }
         });
+
+        /**
+         * abre la ventana verTicketsAdmin
+         */
         botonTicketVendidos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -74,6 +86,10 @@ public class MenuAdmin extends JFrame {
                 VerTicketsAdmin verTicketsAdmin = new VerTicketsAdmin();
             }
         });
+
+        /**
+         * Vuelve a la ventana login
+         */
         cerrarSesionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

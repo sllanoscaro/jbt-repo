@@ -38,6 +38,9 @@ public class HacerResena extends JFrame {
 
         setVisible(true);
 
+        /**
+         * guarda los datos recibidos en resenas.csv
+         */
         hacerResenaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

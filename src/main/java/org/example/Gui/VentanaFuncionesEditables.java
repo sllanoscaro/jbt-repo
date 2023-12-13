@@ -49,7 +49,9 @@ public class VentanaFuncionesEditables extends JFrame {
         volverButton = new JButton("Volver");
 
 
-
+/**
+ * abre la ventana ventanaAsignarSala y le entrega una funcion
+ */
         asignarSalaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -70,6 +72,9 @@ public class VentanaFuncionesEditables extends JFrame {
             }
         });
 
+        /**
+         * abre la ventana ventanaEdicion con los datos de la fila seleccionada
+         */
         editarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -90,6 +95,9 @@ public class VentanaFuncionesEditables extends JFrame {
             }
         });
 
+        /**
+         * abre la ventana agregarFuncion
+         */
         agregarPeliculaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -98,6 +106,10 @@ public class VentanaFuncionesEditables extends JFrame {
 
             }
         });
+
+        /**
+         * vuelve a la ventana menuAdmin();
+         */
         volverButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

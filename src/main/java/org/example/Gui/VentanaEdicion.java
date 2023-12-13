@@ -45,7 +45,9 @@ public class VentanaEdicion extends JFrame {
         clasificacionField5.setText(clasificacion);
 
 
-
+/**
+ * actualiza los datos de la pelicula con los datos ingresado en el textfield
+ */
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

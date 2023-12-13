@@ -36,8 +36,9 @@ public class VentanaAsignarSala extends JFrame {
         panel.setLayout(new GridLayout(6, 2));
 
 
-
-
+/**
+ * se le asigna una sala a una pelicula
+ */
         asignarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

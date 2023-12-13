@@ -52,7 +52,9 @@ public class MenuParaUsuario extends JFrame {
         add(panel);
         setVisible(true);
 
-
+/**
+ * abre la ventana menuFuncionesUsuario
+ */
         botonVerFunciones.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -61,6 +63,9 @@ public class MenuParaUsuario extends JFrame {
             }
         });
 
+        /**
+         * abre la ventana hacerResena
+         */
         botonHacerResena.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -69,6 +74,10 @@ public class MenuParaUsuario extends JFrame {
 
             }
         });
+
+        /**
+         * vuelve a la ventana login
+         */
         buttonCerrarSesion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -77,6 +86,9 @@ public class MenuParaUsuario extends JFrame {
 
             }
         });
+        /**
+         * abre la ventana verMisTicketUsuarios
+         */
         botonVerMisTickets.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

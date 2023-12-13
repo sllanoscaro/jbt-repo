@@ -14,22 +14,46 @@ import org.example.Modelo.Sala;
 
 import org.example.Modelo.Admin;
 public interface DatosFunciones {
+
+    /**
+     * Escribe en datosFunciones.csv los datos de Funciones y Salas
+     * @param funcion se entrega una funcion y se escriben por separado cada atributo
+     * @param sala se entrega una sala y se escriben por separado cada atributo
+     */
     static void guardarDatosFuncionesEnCSV(Funcion funcion, Sala sala) {
         String[] datos = {funcion.getNombre(), funcion.getGenero(),funcion.getDirector(),funcion.getSinopsis(),funcion.getClasificacion(),sala.getNumeroSala(),sala.getHorario(),funcion.getRating()};
         escribirCSV("src\\main\\resources\\datosFunciones.csv", datos);
         System.out.println("Datos guardados en datosFunciones.csv");
     }
+    /**
+     * Escribe en peliculas.csv los datos de Funciones y Salas
+     * @param funcion se entrega una funcion y se escriben por separado cada atributo
+     * @param sala se entrega una sala y se escriben por separado cada atributo
+     */
     static void guardarDatosPeliculasEnCSV(Funcion funcion, Sala sala) {
         String[] datos = {funcion.getNombre(), funcion.getGenero(),funcion.getDirector(),funcion.getSinopsis(),funcion.getClasificacion(),sala.getNumeroSala(),sala.getHorario(),funcion.getRating()};
         escribirCSV("src\\main\\resources\\peliculas.csv", datos);
         System.out.println("Datos guardados en peliculas.csv");
     }
+
+    /**
+     * Escribe en peliculas.csv los datos de Funciones y Salas
+     * @param nombre se registra el nombre del usuario que hizo la resena
+     * @param funcion se entrega una funcion y se escriben por separado cada atributo
+     * @param sala se entrega una sala y se escriben por separado cada atributo
+     */
     static void guardarDatosResenas(String nombre, Funcion funcion, Sala sala) {
         String[] datos = {nombre,funcion.getNombre(), funcion.getGenero(),funcion.getDirector(),funcion.getSinopsis(),funcion.getClasificacion(),sala.getNumeroSala(),sala.getHorario(),funcion.getRating()};
         escribirCSV("src\\main\\resources\\resenas.csv", datos);
         System.out.println("Datos guardados en resenas.csv");
     }
 
+
+    /**
+     * Escribe los datos en el csv ingresado
+     * @param nombreArchivo recibe el nombre del archivo para ingresar los datos
+     * @param datos recibe los datos ingresados para
+     */
     static void escribirCSV(String nombreArchivo, String[] datos) {
         try (FileWriter writer = new FileWriter(nombreArchivo, true)) {
             for (String dato : datos) {
@@ -40,6 +64,12 @@ public interface DatosFunciones {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Muestra los datos de datosFunciones.csv
+     * @param model muestra los datos del modelo
+     * @return
+     */
     static DefaultTableModel mostrarDatosFuncionesCSV(DefaultTableModel model){
         try (BufferedReader br = new BufferedReader(new FileReader("src\\main\\resources\\datosFunciones.csv"))) {
             String line;
@@ -52,6 +82,11 @@ public interface DatosFunciones {
         }
         return model;
     }
+    /**
+     * Muestra los datos de peliculas.csv
+     * @param model muestra los datos del modelo
+     * @return
+     */
     static DefaultTableModel mostrarDatosCSV(DefaultTableModel model){
         try (BufferedReader br = new BufferedReader(new FileReader("src\\main\\resources\\peliculas.csv"))) {
             String line;
@@ -64,6 +99,11 @@ public interface DatosFunciones {
         }
         return model;
     }
+    /**
+     * Muestra los datos de tickets.csv
+     * @param model muestra los datos del modelo
+     * @return
+     */
     static DefaultTableModel mostrarTicketsUsuariosCSV(DefaultTableModel model){
         try (BufferedReader br = new BufferedReader(new FileReader("src\\main\\resources\\tickets.csv"))) {
             String line;
@@ -76,6 +116,11 @@ public interface DatosFunciones {
         }
         return model;
     }
+    /**
+     * Muestra los datos de resenas.csv
+     * @param model muestra los datos del modelo
+     * @return
+     */
     static DefaultTableModel mostrarResenasCSV(DefaultTableModel model){
         try (BufferedReader br = new BufferedReader(new FileReader("src\\main\\resources\\resenas.csv"))) {
             String line;
@@ -88,6 +133,13 @@ public interface DatosFunciones {
         }
         return model;
     }
+
+    /**
+     * filtra las funciones por nombre
+     * @param userName recibe el nombre para que filtre las peliculas
+     * @param model recibe todas las funciones
+     * @return
+     */
     static DefaultTableModel filtrarFilasPorNombre(String userName, DefaultTableModel model) {
         for (int i = model.getRowCount() - 1; i >= 0; i--) {
             String currentUserName = (String) model.getValueAt(i, 0);
@@ -97,6 +149,18 @@ public interface DatosFunciones {
         }
         return model;
     }
+
+    /**
+     * Actualiza los datos permitiendo editarlos
+     * @param peliculaOriginal pelicula a editar
+     * @param nuevaPelicula nueva pelicula
+     * @param nuevoGenero nuevo genero
+     * @param nuevoDirector nuevo director
+     * @param nuevaSinopsis nueva sinopsis
+     * @param nuevaClasificacion nueva clasificacion
+     * @param numeroSala nuevo numero sala
+     * @param horario nuevo horario
+     */
     static void actualizarDatosCSV(String peliculaOriginal, String nuevaPelicula, String nuevoGenero, String nuevoDirector, String nuevaSinopsis, String nuevaClasificacion, String numeroSala, String horario) {
         String nombreArchivo = "src\\main\\resources\\peliculas.csv";
         String lineaActual;

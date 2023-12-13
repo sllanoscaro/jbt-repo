@@ -53,7 +53,9 @@ public class VentanaAdminVerResenas extends JFrame {
 
 
 
-
+/**
+ * vuelve a MenuAdmin
+ */
         volverButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

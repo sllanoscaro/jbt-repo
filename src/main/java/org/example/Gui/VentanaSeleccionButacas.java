@@ -14,16 +14,26 @@ import java.util.List;
 
 public class VentanaSeleccionButacas extends JFrame {
     private Sala sala;
-    private List<JButton> selectedSeats;
+    private List<JButton> asientoSeleccionado;
 
-
+    /**
+     * Constructor
+     * @param sala
+     * @param nombre
+     * @param pelicula
+     */
     public VentanaSeleccionButacas(Sala sala, String nombre, String pelicula) {
         this.sala = sala;
-        this.selectedSeats = new ArrayList<>();
-        initComponents(nombre,pelicula);
+        this.asientoSeleccionado = new ArrayList<>();
+        inicializarComponentes(nombre,pelicula);
     }
 
-    private void initComponents(String nombre,String pelicula) {
+    /**
+     * crea la ventana con las butacas para seleccionar y comprar
+     * @param nombre nombre asignado
+     * @param pelicula pelicula asignada
+     */
+    private void inicializarComponentes(String nombre,String pelicula) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Sala de Cine - Sala " + sala.getNumeroSala() + " - Horario: " + sala.getHorario());
 
@@ -50,7 +60,7 @@ public class VentanaSeleccionButacas extends JFrame {
                     button.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            toggleSeatSelection(button);
+                            seleccionDeAsiento(button);
                         }
                     });
                 }
@@ -63,7 +73,7 @@ public class VentanaSeleccionButacas extends JFrame {
         confirmButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                confirmSelection(nombre,pelicula);
+                confirmarSeleccion(nombre,pelicula);
             }
         });
 
@@ -78,19 +88,19 @@ public class VentanaSeleccionButacas extends JFrame {
         setVisible(true);
     }
 
-    private void toggleSeatSelection(JButton button) {
-        if (selectedSeats.contains(button)) {
+    private void seleccionDeAsiento(JButton button) {
+        if (asientoSeleccionado.contains(button)) {
             button.setBackground(Color.GREEN);
-            selectedSeats.remove(button);
+            asientoSeleccionado.remove(button);
         } else {
 
             button.setBackground(Color.YELLOW);
-            selectedSeats.add(button);
+            asientoSeleccionado.add(button);
         }
     }
 
-    private void confirmSelection(String nombre, String pelicula) {
-        if (selectedSeats.isEmpty()) {
+    private void confirmarSeleccion(String nombre, String pelicula) {
+        if (asientoSeleccionado.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, selecciona al menos un asiento antes de confirmar la compra.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -98,7 +108,7 @@ public class VentanaSeleccionButacas extends JFrame {
         String salaInfo = "Sala " + sala.getNumeroSala() + " - Horario: " + sala.getHorario();
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/tickets.csv", true))) {
-            for (JButton button : selectedSeats) {
+            for (JButton button : asientoSeleccionado) {
                 int row = (button.getY() - 2) / (button.getHeight() + 5);
                 int col = (button.getX() - 2) / (button.getWidth() + 5);
 
@@ -113,7 +123,7 @@ public class VentanaSeleccionButacas extends JFrame {
                 button.setEnabled(false);
             }
 
-            selectedSeats.clear();
+            asientoSeleccionado.clear();
 
             JOptionPane.showMessageDialog(this, "Compra Exitosa", "Compra Exitosa", JOptionPane.INFORMATION_MESSAGE);
 

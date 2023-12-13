@@ -48,6 +48,9 @@ public class VerUsuarios extends JFrame {
 
         setVisible(true);
 
+        /**
+         * vuelve a menuAdmin
+         */
         volverButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

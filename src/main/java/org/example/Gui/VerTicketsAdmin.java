@@ -65,6 +65,9 @@ public class VerTicketsAdmin extends JFrame {
 
         setVisible(true);
 
+        /**
+         * vuelve a MenuAdmin
+         */
         volverButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

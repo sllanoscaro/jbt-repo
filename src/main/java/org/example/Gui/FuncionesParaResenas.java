@@ -45,7 +45,9 @@ public class FuncionesParaResenas extends JFrame {
         volverButton = new JButton("Volver");
 
 
-
+/**
+ * obtiene los datos de la fila seleccionada y abre ventana hacerResena con esos datos
+ */
         hacerResenaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -65,7 +67,9 @@ public class FuncionesParaResenas extends JFrame {
             }
         });
 
-
+/**
+ * vuelve al menu usuario
+ */
         volverButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

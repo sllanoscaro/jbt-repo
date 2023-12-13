@@ -45,7 +45,9 @@ public class VerMisTicketsUsuario extends JFrame {
         add(panel);
 
         setVisible(true);
-
+/**
+ * vuelve a MenuParaUsuario
+ */
         volverButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
