@@ -22,6 +22,7 @@
 14) (11/12) (Arturo Av. / Lian Ca.): Unimos los codigos para que funcione todo correctamente.
 15) (12/12) (Arturo Av.): Creacion de la ventana para que el usuario vea sus tickets terminada, y implementacion en menuUsuario y menuAdmin un boton que permita cerrar la sesion para ingresar como otro usuario o admin.
 16) (12/12) (Arturo Av.): Realizacion del VPP respecto al codigo final
+17) (12/12) (Lian Ca. / Sebastian Ll.): Realizacion del informe final.
 
 
 
