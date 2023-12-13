@@ -64,6 +64,18 @@ public interface DatosFunciones {
         }
         return model;
     }
+    static DefaultTableModel mostrarTicketsUsuariosCSV(DefaultTableModel model){
+        try (BufferedReader br = new BufferedReader(new FileReader("src\\main\\resources\\tickets.csv"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                model.addRow(data);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return model;
+    }
     static DefaultTableModel mostrarResenasCSV(DefaultTableModel model){
         try (BufferedReader br = new BufferedReader(new FileReader("src\\main\\resources\\resenas.csv"))) {
             String line;
@@ -76,15 +88,12 @@ public interface DatosFunciones {
         }
         return model;
     }
-    static DefaultTableModel mostrarTicketsCSV(DefaultTableModel model){
-        try (BufferedReader br = new BufferedReader(new FileReader("src\\main\\resources\\tickets.csv"))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] data = line.split(",");
-                model.addRow(data);
+    static DefaultTableModel filtrarFilasPorNombre(String userName, DefaultTableModel model) {
+        for (int i = model.getRowCount() - 1; i >= 0; i--) {
+            String currentUserName = (String) model.getValueAt(i, 0);
+            if (!currentUserName.equals(userName)) {
+                model.removeRow(i);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
         return model;
     }

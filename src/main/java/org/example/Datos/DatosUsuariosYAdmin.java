@@ -79,11 +79,12 @@ public interface DatosUsuariosYAdmin {
     }
     static boolean buscarUsuarioOAdmin(String usuarioBuscado, String claveBuscado) {
         boolean permisos = true;
+        Admin admin = new Admin();
         try (BufferedReader br = new BufferedReader(new FileReader("src\\main\\resources\\datosUsuarios.csv"))) {
             String linea;
             while ((linea = br.readLine()) != null) {
                 String[] datos = linea.split(",");
-                if (usuarioBuscado.equals("admin") && claveBuscado.equals("1234") && datos.length >= 2) {
+                if (usuarioBuscado.equals(admin.getNombre()) && claveBuscado.equals(admin.getClave()) && datos.length >= 2) {
                     permisos = true;
                     return permisos;
                 }
@@ -100,11 +101,12 @@ public interface DatosUsuariosYAdmin {
     }
     static boolean buscarUsuarioPorNombre(String usuarioBuscado) {
         boolean usuarioEncontrado = false;
+        Admin admin = new Admin();
         try (BufferedReader br = new BufferedReader(new FileReader("src\\main\\resources\\datosUsuarios.csv"))) {
             String linea;
             while ((linea = br.readLine()) != null) {
                 String[] datos = linea.split(",");
-                if (usuarioBuscado.equals("admin") && datos.length >= 2) {
+                if (usuarioBuscado.equals(admin.getNombre()) && datos.length >= 2) {
                     usuarioEncontrado = true;
                     return usuarioEncontrado;
                 } else if (datos[0].equals(usuarioBuscado)) {

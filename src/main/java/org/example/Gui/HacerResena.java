@@ -51,6 +51,7 @@ public class HacerResena extends JFrame {
                 DatosFunciones.guardarDatosResenas(nombre, funcion, sala);
                 JOptionPane.showMessageDialog(null, "Se ha realizado la resena con exito!", "Resena", JOptionPane.INFORMATION_MESSAGE);
                 dispose();
+                FuncionesParaResenas funcionesParaResenas = new FuncionesParaResenas(nombre);
             }
         });
     }

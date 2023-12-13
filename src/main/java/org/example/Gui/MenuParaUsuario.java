@@ -12,9 +12,12 @@ public class MenuParaUsuario extends JFrame {
     private JButton botonVerFunciones;
     private JButton botonHacerResena;
     private JLabel usuario;
-    private JLabel verFuncionesLabel;
+    private JLabel verMisTicketsLabel;
     private JLabel hacerResenasLabel;
     private JButton buttonCerrarSesion;
+    private JLabel cerrarSesionLabel;
+    private JButton botonVerMisTickets;
+    private JLabel verFuncionesLabel;
 
     public MenuParaUsuario(String nombre) {
         setTitle("Menu Usuario");
@@ -26,7 +29,8 @@ public class MenuParaUsuario extends JFrame {
         usuario.setText("                                 "+nombre);
 
 
-        panel.setLayout(new GridLayout(4, 2, 10, 10));
+
+        panel.setLayout(new GridLayout(5, 2, 10, 10));
 
 
 
@@ -34,9 +38,14 @@ public class MenuParaUsuario extends JFrame {
         panel.add(titulo);
         panel.add(usuario);
         panel.add(verFuncionesLabel);
-        panel.add(hacerResenasLabel);
+        panel.add(verMisTicketsLabel);
         panel.add(botonVerFunciones);
+        panel.add(botonVerMisTickets);
+        panel.add(hacerResenasLabel);
+        panel.add(cerrarSesionLabel);
         panel.add(botonHacerResena);
+        panel.add(buttonCerrarSesion);
+
 
 
 
@@ -55,7 +64,24 @@ public class MenuParaUsuario extends JFrame {
         botonHacerResena.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                dispose();
                 FuncionesParaResenas hacerResena = new FuncionesParaResenas(nombre);
+
+            }
+        });
+        buttonCerrarSesion.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                Login login = new Login();
+
+            }
+        });
+        botonVerMisTickets.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                VerMisTicketsUsuario verMisTicketsUsuario = new VerMisTicketsUsuario(nombre);
 
             }
         });

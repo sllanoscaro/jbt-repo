@@ -5,7 +5,6 @@ public class Usuario {
 
     private String nombre;
     private String clave;
-    private boolean privilegios = false;
 
     private  String[] peliculasFav;
 

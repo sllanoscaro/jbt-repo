@@ -82,10 +82,11 @@ public class VentanaFuncionesEditables extends JFrame {
                     String clasificacion = (String) dataTable.getValueAt(selectedRow, 4);
 
                     new VentanaEdicion(pelicula, genero, director, sinopsis, clasificacion);
+                    dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "Selecciona una fila para editar.");
                 }
-                dispose();
+
             }
         });
 

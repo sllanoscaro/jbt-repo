@@ -65,7 +65,7 @@ public class Login extends JFrame {
                 usuario1.setNombre(usuario);
                 usuario1.setClave(clave);
                 DatosUsuariosYAdmin.guardarDatosEnCSV(usuario1);
-                JOptionPane.showMessageDialog(null, "Cuenta creada exitosamente", "Cuenta creada", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Cuenta creada exitosamente", "Cuenta creada", JOptionPane.WARNING_MESSAGE);
                 usuarioText.setText("");
                 claveText.setText("");
             }
@@ -83,12 +83,12 @@ public class Login extends JFrame {
                     JOptionPane.showMessageDialog(null, "Inicio de sesion exitoso", "Bienvenido", JOptionPane.WARNING_MESSAGE);
 
                     if (DatosUsuariosYAdmin.buscarUsuarioOAdmin(usuarioText.getText(), claveText.getText())){
-                        JOptionPane.showMessageDialog(null, "Eres admin Crack", "Bienvenido", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Ingreso reconocido como: Admin", "Bienvenido", JOptionPane.WARNING_MESSAGE);
                         dispose();
                         MenuAdmin menuAdmin = new MenuAdmin();
                     }
                     else{
-                        JOptionPane.showMessageDialog(null, "Eres usuario bestia", "Bienvenido", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Ingreso reconocido como: Usuario", "Bienvenido", JOptionPane.WARNING_MESSAGE);
                         dispose();
                         MenuParaUsuario menuParaUsuario = new MenuParaUsuario(usuarioText.getText());
 

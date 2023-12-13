@@ -50,7 +50,7 @@
         </constraints>
         <properties>
           <font name="Segoe UI Black" size="36"/>
-          <text value="                         Ver Funciones Disponibles"/>
+          <text value="                         Ver Peliculas Disponibles"/>
         </properties>
       </component>
       <component id="94aa0" class="javax.swing.JLabel" binding="verResenasLabel">
@@ -85,26 +85,23 @@
           <text value=""/>
         </properties>
       </component>
-      <component id="3334" class="javax.swing.JLabel" binding="adminLabel">
-        <constraints>
-          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <font name="Fira Code Medium" size="48"/>
-          <horizontalAlignment value="2"/>
-          <horizontalTextPosition value="2"/>
-          <text value="ADMIN     "/>
-        </properties>
-      </component>
       <component id="9f271" class="javax.swing.JLabel" binding="titulo">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <font name="Fira Code Medium" size="48"/>
           <horizontalAlignment value="4"/>
           <horizontalTextPosition value="4"/>
-          <text value="MENU "/>
+          <text value="MENU ADMIN"/>
+        </properties>
+      </component>
+      <component id="759c" class="javax.swing.JButton" binding="cerrarSesionButton" default-binding="true">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Cerrar Sesion"/>
         </properties>
       </component>
     </children>
