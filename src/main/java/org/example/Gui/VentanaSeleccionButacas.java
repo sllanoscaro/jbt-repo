@@ -51,10 +51,8 @@ public class VentanaSeleccionButacas extends JFrame {
                 JButton button = new JButton();
                 button.setPreferredSize(new Dimension(40, 40));
 
-                // Get the seat information for the current button
                 String currentSeat = "(" + (i + 1) + "-" + (char) ('A' + j) + ")";
 
-                // Check if the current seat is in the filtered CSV data
                 List<String[]> csvDataList = DatosFunciones.csvAuxiliiar(sala.getNumeroSala(), sala.getHorario(), pelicula);
                 boolean seatOccupied = csvDataList.stream().anyMatch(data -> data[2].equals(currentSeat));
 
