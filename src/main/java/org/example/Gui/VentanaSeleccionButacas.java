@@ -51,12 +51,12 @@ public class VentanaSeleccionButacas extends JFrame {
                 JButton button = new JButton();
                 button.setPreferredSize(new Dimension(40, 40));
 
-                String currentSeat = "(" + (i + 1) + "-" + (char) ('A' + j) + ")";
+                String asientoActual = "(" + (i + 1) + "-" + (char) ('A' + j) + ")";
 
-                List<String[]> csvDataList = DatosFunciones.csvAuxiliiar(sala.getNumeroSala(), sala.getHorario(), pelicula);
-                boolean seatOccupied = csvDataList.stream().anyMatch(data -> data[2].equals(currentSeat));
+                List<String[]> csvLista = DatosFunciones.csvAuxiliiar(sala.getNumeroSala(), sala.getHorario(), pelicula);
+                boolean asientoOcupado = csvLista.stream().anyMatch(data -> data[2].equals(asientoActual));
 
-                if (seatOccupied || sala.getButacas()[i][j]) {
+                if (asientoOcupado || sala.getButacas()[i][j]) {
                     button.setBackground(Color.RED);
                     button.setEnabled(false);
                 } else {
@@ -73,8 +73,8 @@ public class VentanaSeleccionButacas extends JFrame {
             }
         }
 
-        JButton confirmButton = new JButton("Comprar");
-        confirmButton.addActionListener(new ActionListener() {
+        JButton botonConfirmar = new JButton("Comprar");
+        botonConfirmar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 confirmarSeleccion(nombre, pelicula);
@@ -82,7 +82,7 @@ public class VentanaSeleccionButacas extends JFrame {
         });
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.add(confirmButton);
+        buttonPanel.add(botonConfirmar);
 
         add(panel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
@@ -92,18 +92,18 @@ public class VentanaSeleccionButacas extends JFrame {
         setVisible(true);
     }
 
-    private void seleccionDeAsiento(JButton button) {
-        if (asientoSeleccionado.contains(button)) {
-            button.setBackground(Color.GREEN);
-            asientoSeleccionado.remove(button);
+    private void seleccionDeAsiento(JButton boton) {
+        if (asientoSeleccionado.contains(boton)) {
+            boton.setBackground(Color.GREEN);
+            asientoSeleccionado.remove(boton);
         } else {
-            button.setBackground(Color.YELLOW);
-            asientoSeleccionado.add(button);
+            boton.setBackground(Color.YELLOW);
+            asientoSeleccionado.add(boton);
         }
     }
 
     private void confirmarSeleccion(String nombre, String pelicula) {
-        String seat = "";
+        String asiento = "";
 
         if (asientoSeleccionado.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, selecciona al menos un asiento antes de confirmar la compra.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -117,10 +117,10 @@ public class VentanaSeleccionButacas extends JFrame {
                 int row = (button.getY() - 2) / (button.getHeight() + 5);
                 int col = (button.getX() - 2) / (button.getWidth() + 5);
 
-                seat = "(" + (row + 1) + "-" + (char) ('A' + col) + ")";
+                asiento = "(" + (row + 1) + "-" + (char) ('A' + col) + ")";
                 sala.getButacas()[row][col] = true;
 
-                writer.write(nombre + "," + pelicula + "," + seat + "," + salaInfo);
+                writer.write(nombre + "," + pelicula + "," + asiento + "," + salaInfo);
                 writer.newLine();
 
                 button.setBackground(Color.RED);
@@ -129,7 +129,7 @@ public class VentanaSeleccionButacas extends JFrame {
 
             asientoSeleccionado.clear();
 
-            JOptionPane.showMessageDialog(this, "Compra Exitosa", "Compra Exitosa" + seat, JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Compra Exitosa", "Compra Exitosa" + asiento, JOptionPane.INFORMATION_MESSAGE);
 
             dispose();
         } catch (IOException e) {

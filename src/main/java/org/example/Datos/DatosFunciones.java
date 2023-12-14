@@ -191,7 +191,7 @@ public interface DatosFunciones {
         }
     }
      static List<String[]> csvAuxiliiar(String sala, String horario, String pelicula) {
-        List<String[]> dataList = new ArrayList<>();
+        List<String[]> listaDeDatos = new ArrayList<>();
         File archivo = null;
         FileReader fr = null;
         BufferedReader br = null;
@@ -211,7 +211,7 @@ public interface DatosFunciones {
 
                 String[] datos = linea.split(",");
                 if (datos.length == 4 && datos[3].equals("Sala " + sala + " - Horario: " + horario) && datos[1].equals(pelicula)) {
-                    dataList.add(datos);
+                    listaDeDatos.add(datos);
                 }
             }
         } catch (Exception e) {
@@ -225,7 +225,7 @@ public interface DatosFunciones {
                 e2.printStackTrace();
             }
         }
-        return dataList;
+        return listaDeDatos;
     }
 
 }
