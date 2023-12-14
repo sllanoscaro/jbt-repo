@@ -26,7 +26,7 @@ public class MenuParaUsuario extends JFrame {
     private JLabel verFuncionesLabel;
 
     public MenuParaUsuario(String nombre) {
-        setTitle("Menu Usuario");
+        setTitle("Menú Usuario");
         setSize(400, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);

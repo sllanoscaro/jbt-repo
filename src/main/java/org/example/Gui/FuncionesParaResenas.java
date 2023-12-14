@@ -18,7 +18,7 @@ public class FuncionesParaResenas extends JFrame {
 
 
     public FuncionesParaResenas(String nombre) {
-        setTitle("Funciones para hacer resenas");
+        setTitle("Funciones para hacer reseñas");
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -41,7 +41,7 @@ public class FuncionesParaResenas extends JFrame {
         panel.setLayout(new BorderLayout());
         panel.add(new JScrollPane(dataTable), BorderLayout.CENTER);
 
-        hacerResenaButton = new JButton("Hacer Resena");
+        hacerResenaButton = new JButton("Hacer Reseña");
         volverButton = new JButton("Volver");
 
 

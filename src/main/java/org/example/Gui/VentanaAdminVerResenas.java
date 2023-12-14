@@ -18,7 +18,7 @@ public class VentanaAdminVerResenas extends JFrame {
 
 
     public VentanaAdminVerResenas() {
-        setTitle("Ver resenas como admin");
+        setTitle("Ver reseñas como admin");
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -35,7 +35,7 @@ public class VentanaAdminVerResenas extends JFrame {
         model.addColumn("Clasificación");
         model.addColumn("");
         model.addColumn("");
-        model.addColumn("Resena");
+        model.addColumn("Reseña");
 
 
         panel = new JPanel();
@@ -48,7 +48,7 @@ public class VentanaAdminVerResenas extends JFrame {
         panel.add(new JScrollPane(dataTable), BorderLayout.CENTER);
 
         // Instantiate the buttons
-        hacerResenaButton = new JButton("Hacer Resena");
+        hacerResenaButton = new JButton("Hacer Reseña");
         volverButton = new JButton("Volver");
 
 

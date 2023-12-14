@@ -1,8 +1,5 @@
 package org.example.Datos;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -193,7 +190,42 @@ public interface DatosFunciones {
             System.err.println("Error al borrar el contenido del archivo CSV: " + e.getMessage());
         }
     }
+     static List<String[]> csvAuxiliiar(String sala, String horario, String pelicula) {
+        List<String[]> dataList = new ArrayList<>();
+        File archivo = null;
+        FileReader fr = null;
+        BufferedReader br = null;
+        String linea;
 
+        try {
+            archivo = new File("src\\main\\resources\\tickets.csv");
+            fr = new FileReader(archivo);
+            br = new BufferedReader(fr);
+            boolean primeraLinea = true;
 
+            while ((linea = br.readLine()) != null) {
+                if (primeraLinea) {
+                    primeraLinea = false;
+                    continue;
+                }
+
+                String[] datos = linea.split(",");
+                if (datos.length == 4 && datos[3].equals("Sala " + sala + " - Horario: " + horario) && datos[1].equals(pelicula)) {
+                    dataList.add(datos);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (fr != null) {
+                    fr.close();
+                }
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+        }
+        return dataList;
+    }
 
 }

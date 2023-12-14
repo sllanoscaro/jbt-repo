@@ -45,7 +45,7 @@ public class VentanaFuncionesEditables extends JFrame {
         // Instantiate the buttons
         editarButton = new JButton("Editar Datos");
         asignarSalaButton = new JButton("Asignar Sala");
-        agregarPeliculaButton = new JButton("Agregar Pelicula");
+        agregarPeliculaButton = new JButton("Agregar Película");
         volverButton = new JButton("Volver");
 
 
@@ -65,10 +65,11 @@ public class VentanaFuncionesEditables extends JFrame {
                     Funcion funcion = new Funcion(pelicula,genero,director,sinopsis,clasificacion,"");
 
                     new VentanaAsignarSala(funcion);
+                    dispose();
+
                 } else {
                     JOptionPane.showMessageDialog(null, "Selecciona una fila para editar.");
                 }
-                dispose();
             }
         });
 

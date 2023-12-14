@@ -60,7 +60,7 @@ public class Login extends JFrame {
                     return;
                 }
                 if (DatosUsuariosYAdmin.buscarUsuarioPorNombre(usuario)){
-                    JOptionPane.showMessageDialog(null, "Un usuario con ese nombre ya existe, porfavor intente denuevo", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Un usuario con ese nombre ya existe, por favor intente denuevo", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 
@@ -86,7 +86,7 @@ public class Login extends JFrame {
                 }
 
                 if (DatosUsuariosYAdmin.buscarUsuarioyClave(usuarioText.getText(), claveText.getText())){
-                    JOptionPane.showMessageDialog(null, "Inicio de sesion exitoso", "Bienvenido", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso", "Bienvenido", JOptionPane.WARNING_MESSAGE);
 
                     if (DatosUsuariosYAdmin.buscarUsuarioOAdmin(usuarioText.getText(), claveText.getText())){
                         JOptionPane.showMessageDialog(null, "Ingreso reconocido como: Admin", "Bienvenido", JOptionPane.WARNING_MESSAGE);

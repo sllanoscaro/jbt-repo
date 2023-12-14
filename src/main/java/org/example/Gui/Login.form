@@ -71,7 +71,7 @@
         <properties>
           <background color="-16749057"/>
           <foreground color="-394241"/>
-          <text value="Iniciar sesion"/>
+          <text value="Iniciar sesión"/>
         </properties>
       </component>
     </children>

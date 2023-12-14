@@ -30,7 +30,7 @@ public class VerTicketsAdmin extends JFrame {
 
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Nombre");
-        model.addColumn("Pelicula");
+        model.addColumn("Película");
         model.addColumn("Butaca");
         model.addColumn("Sala y Horario");
 

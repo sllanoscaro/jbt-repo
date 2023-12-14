@@ -18,7 +18,7 @@ public class MenuFuncionesUsuarios extends JFrame {
 
 
     public MenuFuncionesUsuarios(String nombre) {
-        setTitle("Menu para ver funciones como usuario");
+        setTitle("Menú para ver funciones como usuario");
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -31,7 +31,7 @@ public class MenuFuncionesUsuarios extends JFrame {
         model.addColumn("Director");
         model.addColumn("Sinopsis");
         model.addColumn("Clasificación");
-        model.addColumn("Numero de Sala");
+        model.addColumn("Número de Sala");
         model.addColumn("Horario");
 
         panel = new JPanel();
@@ -44,7 +44,7 @@ public class MenuFuncionesUsuarios extends JFrame {
         panel.add(new JScrollPane(dataTable), BorderLayout.CENTER);
 
         comprarButton = new JButton("Comprar");
-        volverButton = new JButton("volver");
+        volverButton = new JButton("Volver");
 
         /**
          * abre la ventanaSeleccionButacas con los datos de la fila seleccionada
