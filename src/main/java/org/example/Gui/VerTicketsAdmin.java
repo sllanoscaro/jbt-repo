@@ -43,6 +43,7 @@ public class VerTicketsAdmin extends JFrame {
 
         totalTicketsLabel = new JLabel("Total de Tickets: " + model.getRowCount());
         filasJTableLabel = new JLabel("Dinero total ganado: " + calculadora.calcularPrecioTickets(model,5000) +"$");
+        totalTicketsLabel.setSize(26,26);
 
         panel.setLayout(new BorderLayout());
         panel.add(new JScrollPane(table1), BorderLayout.CENTER);

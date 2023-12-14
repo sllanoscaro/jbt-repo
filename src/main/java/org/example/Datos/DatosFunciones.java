@@ -185,6 +185,14 @@ public interface DatosFunciones {
             e.printStackTrace();
         }
     }
+     static void borrarContenidoArchivoCSV(String rutaArchivoCSV) {
+        try (FileWriter fileWriter = new FileWriter(rutaArchivoCSV)) {
+            fileWriter.write("");
+            System.out.println("Contenido del archivo CSV borrado con éxito.");
+        } catch (IOException e) {
+            System.err.println("Error al borrar el contenido del archivo CSV: " + e.getMessage());
+        }
+    }
 
 
 

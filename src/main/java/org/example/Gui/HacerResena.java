@@ -15,7 +15,7 @@ public class HacerResena extends JFrame {
     private JLabel resenaLabel;
 
     public HacerResena(String nombre, String pelicula, String genero, String director, String sinopsis, String clasificacion) {
-        setTitle("Seleccionar Número");
+        setTitle("Haz tu resena");
         setSize(300, 150);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);

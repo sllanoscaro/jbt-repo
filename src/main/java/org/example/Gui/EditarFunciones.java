@@ -1,24 +1,23 @@
 package org.example.Gui;
 
+import org.example.Datos.DatosFunciones;
+import org.example.Modelo.Sala;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import org.example.Datos.DatosFunciones;
-import org.example.Modelo.Funcion;
 
-
-public class VentanaAdminVerResenas extends JFrame {
+public class EditarFunciones extends JFrame {
     private JTable dataTable;
     private JPanel panel;
-    private JButton hacerResenaButton;
-
+    private JButton eliminarButton;
     private JButton volverButton;
+    private DefaultTableModel tableModel;
 
-
-    public VentanaAdminVerResenas() {
-        setTitle("Ver resenas como admin");
+    public EditarFunciones() {
+        setTitle("Menu para ver funciones como admin");
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -26,52 +25,62 @@ public class VentanaAdminVerResenas extends JFrame {
 
         DefaultTableModel model = new DefaultTableModel();
 
-
-        model.addColumn("Nombre Usuario");
         model.addColumn("Película");
         model.addColumn("Género");
         model.addColumn("Director");
         model.addColumn("Sinopsis");
         model.addColumn("Clasificación");
-        model.addColumn("");
-        model.addColumn("");
-        model.addColumn("Resena");
-
+        model.addColumn("Numero de Sala");
+        model.addColumn("Horario");
 
         panel = new JPanel();
 
-        DatosFunciones.mostrarResenasCSV(model);
+        DatosFunciones.mostrarDatosFuncionesCSV(model);
 
         dataTable = new JTable(model);
 
         panel.setLayout(new BorderLayout());
         panel.add(new JScrollPane(dataTable), BorderLayout.CENTER);
 
-        // Instantiate the buttons
-        hacerResenaButton = new JButton("Hacer Resena");
+        eliminarButton = new JButton("Eliminar Todas Las Funciones");
         volverButton = new JButton("Volver");
 
+        /**
+         * abre la ventanaSeleccionButacas con los datos de la fila seleccionada
+         */
+        eliminarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DatosFunciones.borrarContenidoArchivoCSV("src\\main\\resources\\datosFunciones.csv");
+                dispose();
+                EditarFunciones editarFunciones = new EditarFunciones();
+        }});
 
 
-/**
- * vuelve a MenuAdmin
- */
+        /**
+         * vuelve a menuParaUsuario
+         */
         volverButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 MenuAdmin menuAdmin = new MenuAdmin();
+
             }
+
         });
 
         JPanel buttonPanel = new JPanel();
-
+        buttonPanel.add(eliminarButton);
         buttonPanel.add(volverButton);
 
         panel.add(buttonPanel, BorderLayout.SOUTH);
+
 
         add(panel);
 
         setVisible(true);
     }
+
 }
+

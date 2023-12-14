@@ -90,9 +90,5 @@ public class MenuFuncionesUsuarios extends JFrame {
         setVisible(true);
     }
 
-    public JTable getDataTable() {
-        return dataTable;
-    }
-
 
 }

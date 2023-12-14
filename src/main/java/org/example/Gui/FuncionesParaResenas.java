@@ -18,7 +18,7 @@ public class FuncionesParaResenas extends JFrame {
 
 
     public FuncionesParaResenas(String nombre) {
-        setTitle("Funciones Editables");
+        setTitle("Funciones para hacer resenas");
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);

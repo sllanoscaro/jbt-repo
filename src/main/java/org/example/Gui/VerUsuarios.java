@@ -18,7 +18,7 @@ public class VerUsuarios extends JFrame {
 
 
     public VerUsuarios(){
-        setTitle("Funciones Editables");
+        setTitle("Ver usuarios");
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);

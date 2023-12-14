@@ -24,7 +24,7 @@ public class VentanaAsignarSala extends JFrame {
 
 
     public VentanaAsignarSala(Funcion funcion) {
-        setTitle("Editar Datos");
+        setTitle("Asignar sala");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
