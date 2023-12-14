@@ -23,4 +23,4 @@
 15) (12/12) (Arturo Av.): Creacion de la ventana para que el usuario vea sus tickets terminada, y implementacion en menuUsuario y menuAdmin un boton que permita cerrar la sesion para ingresar como otro usuario o admin.
 16) (12/12) (Arturo Av.): Realizacion del VPP respecto al codigo final y del JavaDOC
 17) (12/12) (Lian Ca. / Sebastian Ll. / Arturo Av.): Realizacion del informe final.
-18) (13/12) (Lian Ca.): Corregí el codigo final y agrege la funcionalidad de mostrar las butacas que ya estan compradas en color rojo, manteniendose los cambios.
+18) (13/12) (Lian Ca.): Corregí detalles del codigo final y agrege la funcionalidad de mostrar las butacas que ya estan compradas en color rojo, manteniendose los cambios.
